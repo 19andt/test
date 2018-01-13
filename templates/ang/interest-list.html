@@ -1,0 +1,18 @@
+<div ng-app="interestList" ng-controller="interestListController">
+    <div class="sidebar-nav" style="width:250px;" id="accordion">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <p data-toggle="collapse" data-parent="#accordion">Interest</p>
+                </div>
+                <div class="panel-collapse collapse in">
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="item in interest_list | orderBy:'toString()'">
+                            <a ng-href="/topic/{{ item }}">{{ item }}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

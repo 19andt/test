@@ -1,0 +1,124 @@
+<div ng-app="userAuthentication" ng-controller="userAuthenticationController">
+    <div class="col-sm-8 col-sm-offset-2" ng-cloak>
+        <md-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Register">
+                    <md-content class="md-padding">
+                        <div layout="column" layout-padding ng-cloak>
+                            <br/>
+                            <md-content class="md-no-momentum">
+                                <div ng-show="show_registration_error" class="alert alert-danger" role="alert">Something went wrong!! We apologise for the inconvenience.</div>
+                                <form name="registrationForm" ng-submit="registration_click()">
+                                    <md-input-container class="md-block">
+                                        <label>Full Name</label>
+                                        <input ng-model="registration.name" ng-required="true" name="name" md-maxlength="30" type="text">
+                                        <div class="hint" style="color: grey; font-size: 12px;">Tell us what we should call you!</div>
+                                        <div ng-messages="registrationForm.name.$error">
+                                            <div ng-message="required">Name is required.</div>
+                                            <div ng-message="md-maxlength">Name has to be less than 30 characters long.</div>
+                                        </div>
+                                    </md-input-container>
+                                    <div layout="row" layout-align="start" flex>
+                                        <md-input-container class="md-icon-float md-block" flex="50">
+                                            <label>Gender</label>
+                                            <md-select ng-model="registration.gender" ng-required="true" name="type">
+                                                <md-option ng-repeat="item in gender_list" value="{{ item }}">{{ item }}</md-option>
+                                            </md-select>
+                                            <div class="hint" style="color: grey; font-size: 12px;">Don't worry nothing personal.</div>
+                                            <div ng-messages="registrationForm.name.$error">
+                                                <div ng-message="required">Gender is required.</div>
+                                            </div>
+                                        </md-input-container>
+                                        <md-input-container class="md-icon-float md-block" flex="50">
+                                            <label>User Type</label>
+                                            <md-select ng-model="registration.type" ng-required="true" name="type">
+                                                <md-option ng-repeat="item in type_list" value="{{ item }}">{{ item }}</md-option>
+                                            </md-select>
+                                            <div class="hint" style="color: grey; font-size: 12px;">Type of user.</div>
+                                            <div ng-messages="registrationForm.name.$error">
+                                                <div ng-message="required">User type is required.</div>
+                                            </div>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout="row" layout-align="start" flex>
+                                        <md-input-container class="md-icon-float md-block" flex="50">
+                                            <label>Email</label>
+                                            <input ng-model="registration.email" ng-required="true" name="email" minlength="10" maxlength="100" ng-pattern="/^([a-zA-Z0-9])+([a-zA-Z0-9._%+-])+@([a-zA-Z0-9_.-])+\.(([a-zA-Z]){2,6})$/" type="email">
+                                            <div class="hint" style="color: grey; font-size: 12px;">How can we reach you?</div>
+                                            <div ng-messages="registrationForm.email.$error">
+                                                <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                                                Your email must be between 10 and 100 characters long and look like an e-mail address.
+                                                </div>
+                                            </div>
+                                        </md-input-container>
+                                        <md-input-container class="md-icon-float md-block" flex="50">
+                                            <label>Mobile Number</label>
+                                            <input ng-model="registration.mobile" name="mobile" ng-required="true" ng-pattern="/^(\+)([0-9]){1,}[ ,-]([0-9]){10}$/" type="text">
+                                            <div class="hint" style="color: grey; font-size: 12px;">+###-##########</div>
+                                            <div ng-messages="registrationForm.mobile.$error">
+                                                <div ng-message-exp="['required', 'pattern']">Enter a valid mobile number.</div>
+                                            </div>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout="row" layout-align="start" flex>
+                                        <md-input-container class="md-icon-float md-block" flex="50">
+                                            <label>Password</label>
+                                            <input ng-model="registration.password" name="password" minlength="8" maxlength="15" ng-required="true" type="password" password-verify="{{ registration.confirmPassword }}">
+                                            <div ng-messages="registrationForm.password.$error">
+                                                <div ng-message="minlength">Password should be atleast 8 characters long!</div>
+                                                <div ng-message="maxlength">Password should be atmost 15 characters long!</div>
+                                                <div ng-message="passwordVerify">Passwords do not match!</div>
+                                            </div>
+                                        </md-input-container>
+                                        <md-input-container class="md-icon-float md-block" flex="50">
+                                            <label>Confirm Password</label>
+                                            <input ng-model="registration.confirmPassword" name="confirmPassword" ng-required="true" type="password" password-verify="{{ registration.password }}">
+                                            <div ng-messages="registrationForm.confirmPassword.$error">
+                                                <div ng-message="passwordVerify">Passwords do not match!</div>
+                                            </div>
+                                        </md-input-container>
+                                    </div>
+                                    <md-input-container class="md-icon-float md-block">
+                                        <md-checkbox name="tos" ng-model="registration.tos" ng-required="true">
+                                            I accept the terms of service.
+                                        </md-checkbox>
+                                        <div ng-messages="registrationForm.tos.$error">
+                                            <div ng-message="required">
+                                                You must accept the terms of service before you can proceed.
+                                            </div>
+                                        </div>
+                                    </md-input-container>
+                                    <md-button type="submit" class="md-raised md-primary" ng-disabled="registrationForm.$invalid">Register</md-button>
+                                </form>
+                            </md-content>
+                        </div>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Login">
+                    <md-content class="md-padding">
+                        <div ng-show="show_login_error" class="alert alert-danger" role="alert">Credentials are wrong!!</div>
+                        <form name="loginForm" ng-submit="login_click()">
+                            <md-input-container class="md-icon-float md-block">
+                                <label>Email</label>
+                                <input ng-model="login.email" ng-required="true" name="email" minlength="10" maxlength="100" ng-pattern="/^([a-zA-Z0-9])+([a-zA-Z0-9._%+-])+@([a-zA-Z0-9_.-])+\.(([a-zA-Z]){2,6})$/" type="email">
+                                <div ng-messages="loginForm.email.$error">
+                                    <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                                        Your email must be between 10 and 100 characters long and look like an e-mail address.
+                                    </div>
+                                </div>
+                            </md-input-container>
+                            <md-input-container class="md-icon-float md-block">
+                                <label>Password</label>
+                                <input ng-model="login.password" name="password" minlength="8" maxlength="15" ng-required="true" type="password">
+                                <div ng-messages="loginForm.password.$error">
+                                    <div ng-message="required">Password is required to login.</div>
+                                </div>
+                            </md-input-container>
+                            <md-button type="submit" class="md-raised md-primary" ng-disabled="loginForm.$invalid">Login</md-button>
+                        </form>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </md-content>
+    </div>
+</div>

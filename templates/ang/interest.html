@@ -1,0 +1,27 @@
+<div ng-app="interest" ng-controller="interestController">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <md-chips ng-model="selected_topics" md-autocomplete-snap md-transform-chip="transformChip($chip)">
+                <!--md-require-match="ctrl.autocompleteDemoRequireMatch">-->
+                <md-autocomplete
+                      md-selected-item="topic"
+                      md-search-text="search_topic"
+                      md-items="item in changed_topic(search_topic)"
+                      md-item-text="item.text"
+                      placeholder="Search for your interests">
+                    <span md-highlight-text="topic_search">{{ item.text }}</span>
+                <!--<span md-highlight-text="searchText">{{item.text}} :: {{item.type}}</span>-->
+                </md-autocomplete>
+                <md-chip-template>
+                    <span>
+                        <!--<strong>{{$chip}}</strong>-->
+                        <strong>{{ $chip.text }}</strong>
+                        <!--<em>({{$chip.type}})</em>-->
+                    </span>
+                </md-chip-template>
+            </md-chips>
+            <h1></h1>
+            <input type="button" ng-click="update_interest()" value="Update">
+        </div>
+    </div>
+</div>

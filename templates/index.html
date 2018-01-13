@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ReviewBag">
+    <head>
+        <base href="/">
+        <meta charset="UTF-8">
+        <title>ReviewBag</title>
+
+        <!--Scripts-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-resource.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-route.js"></script>
+
+        <!--Angular Material-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-aria.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-messages.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/1.0.1/angular-moment.min.js"></script>
+
+        <!--Bootstrap-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+
+        {% load static %}
+
+        <!--CSS Files-->
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+
+        <!--Angular Files-->
+        <script src="{% static 'js/app/app.module.js' %}"></script>
+        <script src="{% static 'js/app/home.module.js' %}"></script>
+        <script src="{% static 'js/app/nav-bar.module.js' %}"></script>
+        <script src="{% static 'js/app/check-authentication.module.js' %}"></script>
+        <script src="{% static 'js/app/login.module.js' %}"></script>
+        <script src="{% static 'js/app/logout.module.js' %}"></script>
+        <script src="{% static 'js/app/add-user.module.js' %}"></script>
+        <script src="{% static 'js/app/authentication.module.js' %}"></script>
+        <script src="{% static 'js/app/user-authentication.module.js' %}"></script>
+        <script src="{% static 'js/app/get-interest.module.js' %}"></script>
+        <script src="{% static 'js/app/interest.module.js' %}"></script>
+        <script src="{% static 'js/app/search-topic.module.js' %}"></script>
+        <script src="{% static 'js/app/update-interest.module.js' %}"></script>
+        <script src="{% static 'js/app/interest-list.module.js' %}"></script>
+        <script src="{% static 'js/app/add-review.module.js' %}"></script>
+        <script src="{% static 'js/app/new-review.module.js' %}"></script>
+        <script src="{% static 'js/app/get-reviews-user.module.js' %}"></script>
+        <script src="{% static 'js/app/home-review-list.module.js' %}"></script>
+        <script src="{% static 'js/app/rb-controllers.module.js' %}"></script>
+        <script src="{% static 'js/app/review-controller.js' %}"></script>
+        <script src="{% static 'js/app/update-rating.module.js' %}"></script>
+        <script src="{% static 'js/app/from-now.module.js' %}"></script>
+
+    </head>
+    <body>
+		{% csrf_token %}
+        <nav-bar></nav-bar>
+        <div class="col-sm-12" ng-view>
+        </div>
+    </body>
+</html>

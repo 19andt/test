@@ -1,0 +1,56 @@
+<div ng-app="newReview" ng-controller="newReviewController">
+    <div>
+        <ul>
+            <li ng-repeat="(key,value) in selected_topics">{{ key }}: {{ value }}</li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="col-sm-8 col-sm-offset-2" ng-cloak>
+            <md-content>
+                <h2>New Review</h2>
+                <form name="newReviewForm" ng-submit="addReview()">
+                    <md-chips ng-model="selected_topics" md-autocomplete-snap md-transform-chip="transformChip($chip)">
+                        <!--md-require-match="ctrl.autocompleteDemoRequireMatch">-->
+                        <md-autocomplete
+                              md-selected-item="topic"
+                              md-search-text="search_topic"
+                              md-items="item in changed_topic(search_topic)"
+                              md-item-text="item.text"
+                              placeholder="Topic">
+                            <span md-highlight-text="topic_search">{{ item.text }}</span>
+                        <!--<span md-highlight-text="searchText">{{item.text}} :: {{item.type}}</span>-->
+                        </md-autocomplete>
+                        <md-chip-template>
+                            <span>
+                                <!--<strong>{{$chip}}</strong>-->
+                                <strong>{{ $chip.text }}</strong>
+                                <!--<em>({{$chip.type}})</em>-->
+                            </span>
+                        </md-chip-template>
+                    </md-chips>
+                    <br>
+                    </md-input-container>
+                    <md-input-container class="md-icon-float md-block">
+                        <label>Caption</label>
+                        <input ng-model="caption" ng-required="true" name="caption" type="text">
+                        <div class="hint" style="color: grey; font-size: 12px;">Message caption.</div>
+                        <div ng-messages="newReviewForm.caption.$error">
+                            <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                                Enter your caption.
+                            </div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-icon-float md-block">
+                        <label>Briefing</label>
+                        <textarea ng-model="briefing" name="briefing" ng-required="true" md-select-on-focus></textarea>
+                        <div class="hint" style="color: grey; font-size: 12px;">Share your view.</div>
+                        <div ng-messages="newReviewForm.briefing.$error">
+                            <div ng-message="required'">Describe your idea.</div>
+                        </div>
+                    </md-input-container>
+                    <md-button type="submit" class="md-raised md-primary" ng-disabled="newReviewForm.$invalid">Add</md-button>
+                </form>
+            </md-content>
+        </div>
+    </div>
+</div>
