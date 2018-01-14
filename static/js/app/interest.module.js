@@ -63,7 +63,7 @@ app.controller('interestController', function($rootScope, $scope, $window, $q, $
         console.log(interests)
         updateInterestService.post(interests, function(data){
             if(data.UpdateInterestStatus){
-                $location.path('/')
+                $window.location.href = ''
             }
         })
     }
