@@ -45,7 +45,7 @@ app.controller('userAuthenticationController', function($rootScope, $scope, $win
                 $scope.show_registration_error = true;
             }
             else{
-                $window.location.href = '';
+                $window.location.href = '/interest';
             }
         });
     }
