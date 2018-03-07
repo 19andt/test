@@ -29,7 +29,10 @@ angular.module('ReviewBag', [
     'homeReviewList',
     'rbControllers',
     'updateRating',
-    'fromNow'
+    'fromNow',
+    'topic',
+    'topicReviewList',
+    'getReviewsTopic',
 ]);
 
 angular.module('ReviewBag').
@@ -54,6 +57,9 @@ angular.module('ReviewBag').
                 }).
                 when('/new-review', {
                     template: '<new-review></new-review>'
+                }).
+                when('/topic/:topic_name', {
+                    template: '<topic></topic>'
                 })
         }
     );
