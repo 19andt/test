@@ -8,6 +8,7 @@ angular.module('ReviewBag', [
     'ngMaterial',
     'ngMessages',
     'angularMoment',
+    'ngSanitize',
 
     // Internal
     'home',
@@ -33,6 +34,7 @@ angular.module('ReviewBag', [
     'topic',
     'topicReviewList',
     'getReviewsTopic',
+    'test',
 ]);
 
 angular.module('ReviewBag').
@@ -60,6 +62,9 @@ angular.module('ReviewBag').
                 }).
                 when('/topic/:topic_name', {
                     template: '<topic></topic>'
+                }).
+                when('/test', {
+                    template: '<test></test>'
                 })
         }
     );

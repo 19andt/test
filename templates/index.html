@@ -6,9 +6,12 @@
         <title>ReviewBag</title>
 
         <!--Scripts-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-resource.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-route.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-sanitize.js"></script>
 
         <!--Angular Material-->
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-animate.min.js"></script>
@@ -26,7 +29,15 @@
         {% load static %}
 
         <!--CSS Files-->
+        <link rel="stylesheet" href="{% static 'css/codemirror.min.css' %}">
         <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/froala_editor.pkgd.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/froala_style.min.css' %}">
+
+        <!--External JS Files-->
+        <script src="{% static 'js/external/codemirror.min.js' %}"></script>
+        <script src="{% static 'js/external/froala_editor.pkgd.min.js' %}"></script>
+        <script src="{% static 'js/external/xml.min.js' %}"></script>
 
         <!--Angular Files-->
         <script src="{% static 'js/app/app.module.js' %}"></script>
@@ -54,6 +65,7 @@
         <script src="{% static 'js/app/topic.module.js' %}"></script>
         <script src="{% static 'js/app/topic-review-list.module.js' %}"></script>
         <script src="{% static 'js/app/get-reviews-topic.module.js' %}"></script>
+        <script src="{% static 'js/app/test.module.js' %}"></script>
 
     </head>
     <body>

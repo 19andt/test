@@ -1,0 +1,16 @@
+<span>From test.module.js</span>
+
+<div id="froala-editor">
+  <p>This example illustrates how to clear the text using a button external to the Froala WYSIWYG HTML Editor interface.</p>
+</div>
+<p><button id="get-text">Clear</button></p>
+<script type="text/javascript">
+    $('div#froala-editor')
+  .on('froalaEditor.initialized', function (e, editor) {
+    editor.events.bindClick($('body'), 'button#get-text', function () {
+      editor.html.set('');
+      editor.events.focus();
+    });
+  })
+  .froalaEditor()
+</script>

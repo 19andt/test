@@ -45,7 +45,7 @@ app.controller('userAuthenticationController', function($rootScope, $scope, $win
                 $scope.show_registration_error = true;
             }
             else{
-                $window.location.href = '/interest';
+                $window.location.href = '';
             }
         });
     }
@@ -64,7 +64,7 @@ app.controller('userAuthenticationController', function($rootScope, $scope, $win
                 $scope.show_login_error = true;
             }
             else{
-                $window.location.href = '';
+                $window.location.href = '/interest';
             }
         });
     }

@@ -12,7 +12,7 @@
                             <div class="row">
                                 <p ng-show="review.added_by.username==user.username"><b><a href="/profile/{{ review.added_by.username }}">You</a></b> have share your view on <b><a href="/review/{{ review.id }}">{{ review.caption }}</a></b>.</p>
                                 <p ng-hide="review.added_by.username==user.username"><b><a href="/profile/{{ review.added_by.username }}">{{ review.added_by.first_name }}</a></b> has shared a view on <b><a href="/review/{{ review.id }}">{{ review.caption }}</a></b></p>
-                                <p>{{ review.briefing }}</p>
+                                <p ng-bind-html="review.briefing"></p>
                                 <ul class="list-inline">
                                     <li>
                                         <p>Tags:-</p>

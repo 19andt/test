@@ -1,4 +1,4 @@
-<div ng-app="newReview" ng-controller="newReviewController">
+<div id="root" ng-app="newReview" ng-controller="newReviewController">
     <div class="container">
         <div class="col-sm-8 col-sm-offset-2" ng-cloak>
             <md-content>
@@ -37,7 +37,29 @@
                     </md-input-container>
                     <md-input-container class="md-icon-float md-block">
                         <label>Briefing</label>
-                        <textarea ng-model="briefing" name="briefing" ng-required="true" md-select-on-focus></textarea>
+                        <!--<textarea ng-model="briefing" name="briefing" ng-required="true" md-select-on-focus></textarea>-->
+                        <div id="froala-editor">
+                            <p>{{ briefing }}</p>
+                        </div>
+                        <script type="text/javascript">
+                            $('div#froala-editor')
+                                .froalaEditor({
+                                    placeholderText: 'Describe your view....'
+                                })
+                                .on('froalaEditor.initialized', function (e, editor) {
+                                    editor.events.bindClick($('body'), 'button#get-text', function () {
+                                        editor.html.set('');
+                                        editor.events.focus();
+                                    });
+                                })
+                                .focusout(function(){
+                                    console.log($('div#froala-editor').froalaEditor('html.get'));
+                                    var scope = angular.element($("div#root")).scope();
+                                    scope.briefing = $('div#froala-editor').froalaEditor('html.get')
+                                    console.log(scope.briefing);
+                                    scope.$apply();
+                                })
+                        </script>
                         <div class="hint" style="color: grey; font-size: 12px;">Share your view.</div>
                         <div ng-messages="newReviewForm.briefing.$error">
                             <div ng-message="required'">Describe your idea.</div>
@@ -47,5 +69,22 @@
                 </form>
             </md-content>
         </div>
+    </div>
+    <div>
+        <!--<textarea id="froala-editor" ng-model="briefing" name="briefing" ng-required="true" md-select-on-focus></textarea>-->
+        <!--<script type="text/javascript">-->
+            <!--$('textarea#froala-editor')-->
+                <!--.froalaEditor({-->
+                    <!--placeholderText: 'Describe your view....'-->
+                <!--})-->
+                <!--.on('froalaEditor.initialized', function (e, editor) {-->
+                    <!--editor.events.bindClick($('body'), 'button#get-text', function () {-->
+                        <!--editor.html.set('');-->
+                        <!--editor.events.focus();-->
+                    <!--});-->
+                <!--})-->
+            <!--.froalaEditor()-->
+        <!--</script>-->
+        <!--<p>{{ briefing }}</p>-->
     </div>
 </div>
