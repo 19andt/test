@@ -1,16 +1,43 @@
 <span>From test.module.js</span>
 
-<div id="froala-editor">
-  <p>This example illustrates how to clear the text using a button external to the Froala WYSIWYG HTML Editor interface.</p>
+<!-- Create the editor container -->
+<div id="editor">
+  <p>Hello World!</p>
+  <p>Some initial <strong>bold</strong> text</p>
+  <p><br></p>
 </div>
-<p><button id="get-text">Clear</button></p>
-<script type="text/javascript">
-    $('div#froala-editor')
-  .on('froalaEditor.initialized', function (e, editor) {
-    editor.events.bindClick($('body'), 'button#get-text', function () {
-      editor.html.set('');
-      editor.events.focus();
-    });
-  })
-  .froalaEditor()
+
+<!-- Initialize Quill editor -->
+<script>
+  var toolbarOptions = [
+  [{ 'font': [] }],
+  [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+  ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+  ['blockquote', 'code-block'],
+
+  [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+  [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+  [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+  [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+  [{ 'direction': 'rtl' }],                         // text direction
+
+  [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+  [{ 'align': [] }],
+
+  ['link', 'image', 'video', 'formula'],
+
+  ['clean']                                         // remove formatting button
+];
+var options = {
+  debug: 'info',
+  modules: {
+    toolbar: toolbarOptions
+  },
+  placeholder: 'Compose an epic...',
+  readOnly: false,
+  theme: 'snow'
+};
+  var quill = new Quill('div#editor', options);
 </script>

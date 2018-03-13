@@ -38,26 +38,48 @@
                     <md-input-container class="md-icon-float md-block">
                         <label>Briefing</label>
                         <!--<textarea ng-model="briefing" name="briefing" ng-required="true" md-select-on-focus></textarea>-->
-                        <div id="froala-editor">
+                        <div id="editor">
                             <p>{{ briefing }}</p>
                         </div>
-                        <script type="text/javascript">
-                            $('div#froala-editor')
-                                .froalaEditor({
-                                    placeholderText: 'Describe your view....'
-                                })
-                                .on('froalaEditor.initialized', function (e, editor) {
-                                    editor.events.bindClick($('body'), 'button#get-text', function () {
-                                        editor.html.set('');
-                                        editor.events.focus();
-                                    });
-                                })
+                        <script>
+                            var toolbarOptions = [
+                                [{ 'font': [] }],
+                                [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+                                [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+                                ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+                                ['blockquote', 'code-block'],
+
+                                [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+                                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                                [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+                                [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+                                [{ 'direction': 'rtl' }],                         // text direction
+
+                                [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+                                [{ 'align': [] }],
+
+                                // ['link', 'image', 'video', 'formula'],
+
+                                ['clean']                                         // remove formatting button
+                            ];
+                            var options = {
+                                debug: 'info',
+                                modules: {
+                                    toolbar: toolbarOptions
+                                },
+                                placeholder: 'Describe your view....',
+                                readOnly: false,
+                                theme: 'snow'
+                            };
+                            var quill = new Quill('div#editor', options);
+                            $('div#editor')
                                 .focusout(function(){
-                                    console.log($('div#froala-editor').froalaEditor('html.get'));
                                     var scope = angular.element($("div#root")).scope();
-                                    scope.briefing = $('div#froala-editor').froalaEditor('html.get')
+                                    scope.briefing = quill.root.innerHTML;
                                     console.log(scope.briefing);
                                     scope.$apply();
+                                    console.log(quill.root.innerHTML);
                                 })
                         </script>
                         <div class="hint" style="color: grey; font-size: 12px;">Share your view.</div>
@@ -69,22 +91,5 @@
                 </form>
             </md-content>
         </div>
-    </div>
-    <div>
-        <!--<textarea id="froala-editor" ng-model="briefing" name="briefing" ng-required="true" md-select-on-focus></textarea>-->
-        <!--<script type="text/javascript">-->
-            <!--$('textarea#froala-editor')-->
-                <!--.froalaEditor({-->
-                    <!--placeholderText: 'Describe your view....'-->
-                <!--})-->
-                <!--.on('froalaEditor.initialized', function (e, editor) {-->
-                    <!--editor.events.bindClick($('body'), 'button#get-text', function () {-->
-                        <!--editor.html.set('');-->
-                        <!--editor.events.focus();-->
-                    <!--});-->
-                <!--})-->
-            <!--.froalaEditor()-->
-        <!--</script>-->
-        <!--<p>{{ briefing }}</p>-->
     </div>
 </div>
