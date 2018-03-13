@@ -35,6 +35,8 @@ angular.module('ReviewBag', [
     'topicReviewList',
     'getReviewsTopic',
     'test',
+    'getTopic',
+    'updateTopic',
 ]);
 
 angular.module('ReviewBag').
