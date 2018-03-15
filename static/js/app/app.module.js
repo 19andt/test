@@ -9,6 +9,7 @@ angular.module('ReviewBag', [
     'ngMessages',
     'angularMoment',
     'ngSanitize',
+    'ui.bootstrap',
 
     // Internal
     'home',
@@ -37,6 +38,7 @@ angular.module('ReviewBag', [
     'test',
     'getTopic',
     'updateTopic',
+    'searchText',
 ]);
 
 angular.module('ReviewBag').
