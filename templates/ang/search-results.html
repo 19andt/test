@@ -1,0 +1,24 @@
+<div ng-app="searchResults" ng-controller="searchResultsController">
+    <div class="row">
+        <div class="col-sm-1">
+            <interest-list></interest-list>
+        </div>
+        <div class="col-sm-8">
+            <div>
+                <div class="col-sm-11 col-sm-offset-2">
+                    <h3>Search results for "{{ search_text }}"</h3>
+                    <hr>
+                    <h4>Add <a ng-click="add_topic()">{{ search_text }}</a></h4>
+                    <h4>Similar Results:</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="item in topic_details">
+                            <h4 style="display: inline;"><a href="/topic/{{ item.name }}">{{ item.name }}</a></h4>
+                            <h6 style="display: inline;"> - {{ item.added_by.first_name }}</h6>
+                            <p ng-show="item.description">{{ item.description }}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

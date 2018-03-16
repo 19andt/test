@@ -21,11 +21,11 @@ app.controller('navBarController', function($rootScope, $scope, $location, $wind
     }
 
     function searching(search_text){
-        var url_params = angular.toJson({
+        var data = angular.toJson({
             search_text: search_text,
         })
 
-        var response = searchTextService.post(url_params)
+        var response = searchTextService.post(data)
         var result = response.$promise.then(function(data){
             return data.TopicList
         })
@@ -36,7 +36,12 @@ app.controller('navBarController', function($rootScope, $scope, $location, $wind
     $scope.selectItem = function($suggestion, $model, $label){
         $location.path('/topic/' + $label)
         $scope.search_text = ''
-        //console.log('Selected:' + $suggestion)
+    }
+
+    $scope.search_click = function(){
+        console.log('Entered here.')
+        $location.path('/search-results/' + $scope.search_text)
+        $scope.search_text = ''
     }
 
     $scope.logout_click = function(){

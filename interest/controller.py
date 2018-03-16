@@ -75,4 +75,12 @@ class InterestController:
                     )
                     # Saving the interest
                     new_interest.save()
+            else:
+                # Creating a new object for the interest and adding the parameters
+                new_interest = interest.objects.create(
+                    user=User,
+                    topic=TopicController.GetTopic(Name=item['text'])[0]
+                )
+                # Saving the interest
+                new_interest.save()
         return

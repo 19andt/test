@@ -8,8 +8,8 @@
             </div>
 
             <!--Search Bar-->
-            <div class="navbar-header">
-                <form class="navbar-form" role="search">
+            <div class="navbar-header" ng-show="authentication_data.UserAuthenticated">
+                <form class="navbar-form" role="search" ng-submit="search_click()">
                     <div class="input-group">
                         <input
                                 type="text"

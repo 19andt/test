@@ -39,6 +39,8 @@ angular.module('ReviewBag', [
     'getTopic',
     'updateTopic',
     'searchText',
+    'searchResults',
+    'addTopic',
 ]);
 
 angular.module('ReviewBag').
@@ -66,6 +68,9 @@ angular.module('ReviewBag').
                 }).
                 when('/topic/:topic_name', {
                     template: '<topic></topic>'
+                }).
+                when('/search-results/:search_text', {
+                    template: '<search-results></search-results>'
                 }).
                 when('/test', {
                     template: '<test></test>'

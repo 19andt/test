@@ -3,12 +3,14 @@ from .rest_views import topic_list, topic_detail
 from .views.search_topic import SearchTopicView
 from .views.get_topic import GetTopicView
 from .views.update_topic import UpdateTopicView
+from .views.add_topic import AddTopicView
 
 urlpatterns = [
     # url for getting the topics
     url(r'^search_topic$', SearchTopicView.as_view()),
     url(r'^get_topic/(?P<topic_name>[\w -]+)', GetTopicView.as_view()),
     url(r'^update_topic$', UpdateTopicView.as_view()),
+    url(r'^add_topic', AddTopicView.as_view()),
 
     # rest framework
     url(r'^rest/api/$', topic_list.as_view()),
