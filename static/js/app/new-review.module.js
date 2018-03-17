@@ -6,24 +6,31 @@ app.component('newReview', {
         templateUrl: '/ang/templates/new-review.html'
     });
 
-app.controller('newReviewController', function($rootScope, $scope, $window, $q, $timeout, searchTopicService, addReviewService){
-    $scope.topic = ''
+app.controller('newReviewController', function($rootScope, $scope, $location, $q, $timeout, searchTopicService, addReviewService, addTopicService){
     $scope.search_topic = ''
-    $scope.selected_topics = []
     $scope.topic_list = []
 
+    $scope.topic = ''
     $scope.caption = ''
     $scope.briefing = ''
     $scope.review_rating = 0
+    $scope.add_topic = false
 
     $scope.addReview = function(){
+        var selected_topics = [
+            {
+                type: 'old',
+                text: $scope.topic
+            }
+        ]
+
         var new_review_data = angular.toJson({
-            topic_list: $scope.selected_topics,
+            topic_list: selected_topics,
             caption: $scope.caption,
             briefing: $scope.briefing
         });
         addReviewService.post(new_review_data, function(data){
-            $window.location.href = ''
+            $location.path('')
         });
     }
 
@@ -33,9 +40,15 @@ app.controller('newReviewController', function($rootScope, $scope, $window, $q, 
         })
         $scope.topic_list=[]
         searchTopicService.post(changed_data, function(data){
-            angular.forEach(data.TopicList, function(item){
-                $scope.topic_list.push({text: item, type:'old'})
-            })
+            if(data.TopicList.length != 0){
+                $scope.add_topic = false
+            }else{
+                $scope.add_topic = true
+            }
+            $scope.topic_list = data.TopicList
+            //angular.forEach(data.TopicList, function(item){
+            //    $scope.topic_list.push({text: item, type:'old'})
+            //})
         });
 
         var deferred = $q.defer();
@@ -43,17 +56,29 @@ app.controller('newReviewController', function($rootScope, $scope, $window, $q, 
         return deferred.promise;
     }
 
-    $scope.topic_selected = function(text){
-        $scope.topic = text;
+    $scope.selectItem = function($suggestion, $model, $label){
+        $scope.topic = $model
     }
 
-    $scope.transformChip = function(chip) {
-        // If it is an object, it's already a known chip
-        if (angular.isObject(chip)) {
-            return chip;
+    $scope.topic_add = function(){
+        if($scope.topic != ''){
+            var new_topic_data = angular.toJson({
+                    name: $scope.topic,
+                    description: ''
+            });
+            addTopicService.post(new_topic_data, function(data){
+                $location.path('/topic/' + $scope.topic)
+            });
         }
-
-        // Otherwise, create a new one
-        return { text: chip, type: 'new' }
     }
+
+//    $scope.transformChip = function(chip) {
+//        // If it is an object, it's already a known chip
+//        if (angular.isObject(chip)) {
+//            return chip;
+//        }
+//
+//        // Otherwise, create a new one
+//        return { text: chip, type: 'new' }
+//    }
 });

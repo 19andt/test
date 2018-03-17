@@ -1,29 +1,45 @@
 <div id="root" ng-app="newReview" ng-controller="newReviewController">
     <div class="container">
         <div class="col-sm-8 col-sm-offset-2" ng-cloak>
+            <h2>New Review</h2>
             <md-content>
-                <h2>New Review</h2>
                 <form name="newReviewForm" ng-submit="addReview()">
-                    <md-chips ng-model="selected_topics" md-autocomplete-snap md-transform-chip="transformChip($chip)">
-                        <!--md-require-match="ctrl.autocompleteDemoRequireMatch">-->
-                        <md-autocomplete
-                              md-selected-item="topic"
-                              md-search-text="search_topic"
-                              md-items="item in changed_topic(search_topic)"
-                              md-item-text="item.text"
-                              placeholder="Topic">
-                            <span md-highlight-text="topic_search">{{ item.text }}</span>
-                        <!--<span md-highlight-text="searchText">{{item.text}} :: {{item.type}}</span>-->
-                        </md-autocomplete>
-                        <md-chip-template>
-                            <span>
-                                <!--<strong>{{$chip}}</strong>-->
-                                <strong>{{ $chip.text }}</strong>
-                                <!--<em>({{$chip.type}})</em>-->
-                            </span>
-                        </md-chip-template>
-                    </md-chips>
-                    <br>
+                    <!--<md-chips ng-model="selected_topics" md-autocomplete-snap md-transform-chip="transformChip($chip)">-->
+                        <!--&lt;!&ndash;md-require-match="ctrl.autocompleteDemoRequireMatch">&ndash;&gt;-->
+                        <!--<md-autocomplete-->
+                              <!--md-selected-item="topic"-->
+                              <!--md-search-text="search_topic"-->
+                              <!--md-items="item in changed_topic(search_topic)"-->
+                              <!--md-item-text="item.text"-->
+                              <!--placeholder="Topic">-->
+                            <!--<span md-highlight-text="topic_search">{{ item.text }}</span>-->
+                        <!--&lt;!&ndash;<span md-highlight-text="searchText">{{item.text}} :: {{item.type}}</span>&ndash;&gt;-->
+                        <!--</md-autocomplete>-->
+                        <!--<md-chip-template>-->
+                            <!--<span>-->
+                                <!--&lt;!&ndash;<strong>{{$chip}}</strong>&ndash;&gt;-->
+                                <!--<strong>{{ $chip.text }}</strong>-->
+                                <!--&lt;!&ndash;<em>({{$chip.type}})</em>&ndash;&gt;-->
+                            <!--</span>-->
+                        <!--</md-chip-template>-->
+                    <!--</md-chips>-->
+                    <!--<br>-->
+                    <md-input-container class="md-icon-float md-block">
+                        <label>Topic</label>
+                        <input
+                            class="display: inline;"
+                            name="topic"
+                            type="text"
+                            ng-model="topic"
+                            ng-required="true"
+                            uib-typeahead="suggestion for suggestion in changed_topic($viewValue) | limitTo:5"
+                            typeahead-on-select="selectItem($suggestion, $model, $label)"><span><a class="display: inline;" class="btn" ng-show="add_topic" ng-click="topic_add()">Add Topic</a></span>
+                        <div class="hint" style="color: grey; font-size: 12px;">Topic.</div>
+                        <div ng-messages="newReviewForm.topic.$error">
+                            <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                                Enter Topic.
+                            </div>
+                        </div>
                     </md-input-container>
                     <md-input-container class="md-icon-float md-block">
                         <label>Caption</label>
@@ -87,7 +103,7 @@
                             <div ng-message="required'">Describe your idea.</div>
                         </div>
                     </md-input-container>
-                    <md-button type="submit" class="md-raised md-primary" ng-disabled="newReviewForm.$invalid">Add</md-button>
+                    <md-button type="submit" class="md-raised md-primary" ng-disabled="newReviewForm.$invalid || add_topic">Add</md-button>
                 </form>
             </md-content>
         </div>
