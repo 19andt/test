@@ -5,6 +5,7 @@
                 <div class="container">
                     <h2 style="display: inline;">{{ topic_selected }}</h2>
                     <h6 style="display: inline;"> - {{ topic_data.added_by.first_name }}</h6>
+                    <h5 style="display: inline;"><a href="/new-review">Write a review on it?</a></h5>
                 </div>
                 <div class="col-sm-9">
                     <div>
@@ -23,14 +24,14 @@
                                         <p ng-show="review.added_by.username==user.username"><b><a href="/profile/{{ review.added_by.username }}">You</a></b> have reviewed on <b><a href="/topic/{{ topic_list[0] }}">{{ topic_list[0] }}</a></b>.</p>
                                         <p ng-hide="review.added_by.username==user.username"><b><a href="/profile/{{ review.added_by.username }}">{{ review.added_by.first_name }}</a></b> has reviewed on <b><a href="/topic/{{ topic_list[0] }}">{{ topic_list[0] }}</a></b></p>
                                         <p ng-bind-html="review.briefing"></p>
-                                        <ul class="list-inline">
-                                            <li>
-                                                <p>Tags:-</p>
-                                            </li>
-                                            <li ng-repeat="item in topic_list">
-                                                <a href="/topic/{{ item }}">{{ item }}</a>
-                                            </li>
-                                        </ul>
+                                        <!--<ul class="list-inline">-->
+                                            <!--<li>-->
+                                                <!--<p>Tags:-</p>-->
+                                            <!--</li>-->
+                                            <!--<li ng-repeat="item in topic_list">-->
+                                                <!--<a href="/topic/{{ item }}">{{ item }}</a>-->
+                                            <!--</li>-->
+                                        <!--</ul>-->
                                         <ul class="list-inline">
                                             <li ng-repeat="i in rating_range">
                                                 <a ng-click="rating_click(i)">

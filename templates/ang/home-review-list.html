@@ -14,14 +14,14 @@
                                 <p ng-hide="review.added_by.username==user.username"><b><a href="/profile/{{ review.added_by.username }}">{{ review.added_by.first_name }}</a></b> has reviewed on <b><a href="/topic/{{ topic_list[0] }}">{{ topic_list[0] }}</a></b></p>
                                 <p>{{ review.caption }}</p>
                                 <p ng-bind-html="review.briefing"></p>
-                                <ul class="list-inline">
-                                    <li>
-                                        <p>Tags:-</p>
-                                    </li>
-                                    <li ng-repeat="item in topic_list">
-                                        <a href="/topic/{{ item }}">{{ item }}</a>
-                                    </li>
-                                </ul>
+                                <!--<ul class="list-inline">-->
+                                    <!--<li>-->
+                                        <!--<p>Tags:-</p>-->
+                                    <!--</li>-->
+                                    <!--<li ng-repeat="item in topic_list">-->
+                                        <!--<a href="/topic/{{ item }}">{{ item }}</a>-->
+                                    <!--</li>-->
+                                <!--</ul>-->
                                 <ul class="list-inline">
                                     <li ng-repeat="i in rating_range">
                                         <a ng-click="rating_click(i)">

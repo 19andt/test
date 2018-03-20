@@ -38,7 +38,7 @@ app.controller('searchResultsController', function($rootScope, $scope, $routePar
         console.log(typeof query_list)
 
         for(var item in query_list){
-            if(query_list[item] != '' && query_list[item].length >= 3){
+            if(query_list[item] != '' && query_list[item].length >= Math.trunc($scope.search_text.length * 3/4)){
                 var data = angular.toJson({
                     search_text: query_list[item],
                 })

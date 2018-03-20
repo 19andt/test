@@ -6,7 +6,7 @@ app.component('userAuthentication', {
         templateUrl: '/ang/templates/user-authentication.html'
     });
 
-app.controller('userAuthenticationController', function($rootScope, $scope, $window, addUserService, loginService){
+app.controller('userAuthenticationController', function($rootScope, $scope, $window, $location, addUserService, loginService){
     $scope.gender_list = ['Male', 'Female', 'Not interested to tell']
     $scope.type_list = ['Individual', 'Company']
 
@@ -45,7 +45,7 @@ app.controller('userAuthenticationController', function($rootScope, $scope, $win
                 $scope.show_registration_error = true;
             }
             else{
-                $window.location.href = '';
+                $location.path('/interest');
             }
         });
     }
@@ -64,7 +64,7 @@ app.controller('userAuthenticationController', function($rootScope, $scope, $win
                 $scope.show_login_error = true;
             }
             else{
-                $window.location.href = '/interest';
+                $window.location.href = '/';
             }
         });
     }

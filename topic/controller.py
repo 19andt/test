@@ -18,14 +18,16 @@ class TopicController:
             return topic.objects.filter(id=ID)
 
     def AddTopic(Data):
-        # Creating a new topic object and adding the values to columns
-        new_topic=topic.objects.create(
-            name=Data.get('name'),
-            added_by=Data.get('added_by'),
-            description=Data.get('description')
-        )
-        # Saving the topic
-        new_topic.save()
+        qs = TopicController.GetTopic(Name=Data.get('name'))
+        if qs.count() == 0:
+            # Creating a new topic object and adding the values to columns
+            new_topic=topic.objects.create(
+                name=Data.get('name'),
+                added_by=Data.get('added_by'),
+                description=Data.get('description')
+            )
+            # Saving the topic
+            new_topic.save()
         return True
 
     def CheckTopicExists(Name):
