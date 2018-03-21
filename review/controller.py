@@ -33,7 +33,7 @@ class ReviewController:
         reviews=[]
 
         # Appending the reviews added by the user to the list
-        reviews.extend(list(ReviewController.GetReviewsByUser(User=User)))
+        # reviews.extend(list(ReviewController.GetReviewsByUser(User=User)))
 
         # Appending the reviews by the interest to the list
         for interest in interests:
