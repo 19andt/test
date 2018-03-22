@@ -67,6 +67,9 @@ angular.module('ReviewBag').
                 when('/new-review', {
                     template: '<new-review></new-review>'
                 }).
+                when('/new-review/:topic_name', {
+                    template: '<new-review></new-review>'
+                }).
                 when('/topic/:topic_name', {
                     template: '<topic></topic>'
                 }).

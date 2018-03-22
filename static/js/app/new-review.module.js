@@ -6,7 +6,7 @@ app.component('newReview', {
         templateUrl: '/ang/templates/new-review.html'
     });
 
-app.controller('newReviewController', function($rootScope, $scope, $location, $q, $timeout, searchTopicService, addReviewService, addTopicService){
+app.controller('newReviewController', function($rootScope, $routeParams, $scope, $location, $q, $timeout, searchTopicService, addReviewService, addTopicService){
     $scope.search_topic = ''
     $scope.topic_list = []
 
@@ -15,6 +15,13 @@ app.controller('newReviewController', function($rootScope, $scope, $location, $q
     $scope.briefing = ''
     $scope.review_rating = 0
     $scope.add_topic = false
+
+    console.log($routeParams)
+    if($routeParams.topic_name != null){
+        $scope.topic = $routeParams.topic_name
+    }else{
+        $scope.topic = ''
+    }
 
     $scope.addReview = function(){
         var selected_topics = [

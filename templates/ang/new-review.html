@@ -33,7 +33,8 @@
                             ng-model="topic"
                             ng-required="true"
                             uib-typeahead="suggestion for suggestion in changed_topic($viewValue) | limitTo:5"
-                            typeahead-on-select="selectItem($suggestion, $model, $label)"><span><a class="display: inline;" class="btn" ng-show="add_topic" ng-click="topic_add()">Add Topic</a></span>
+                            typeahead-on-select="selectItem($suggestion, $model, $label)">
+                        <span><a class="display: inline;" class="btn" ng-show="add_topic" ng-click="topic_add()">Add Topic</a></span>
                         <div class="hint" style="color: grey; font-size: 12px;">Topic.</div>
                         <div ng-messages="newReviewForm.topic.$error">
                             <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
