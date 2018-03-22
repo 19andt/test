@@ -6,7 +6,7 @@ app.component('navBar', {
         templateUrl: '/ang/templates/nav-bar.html'
     });
 
-app.controller('navBarController', function($rootScope, $scope, $location, $window, searchTextService, authenticationService, logoutService) {
+app.controller('navBarController', function($rootScope, $scope, $location, $window, searchTextService, authenticationService, logoutService, updateControllerService) {
     $scope.authentication_data = authenticationService.check_authentication();
     console.log($scope.authentication_data);
 
@@ -19,6 +19,14 @@ app.controller('navBarController', function($rootScope, $scope, $location, $wind
         //return ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Dakota', 'North Carolina', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
         return query_results;
     }
+
+    $scope.$on('UserLoggedIn', function(){
+        $scope.authentication_data = authenticationService.check_authentication();
+    })
+
+    $scope.$on('UserLoggedOut', function(){
+        $scope.authentication_data = authenticationService.check_authentication();
+    })
 
     function searching(search_text){
         var data = angular.toJson({
@@ -47,6 +55,7 @@ app.controller('navBarController', function($rootScope, $scope, $location, $wind
     $scope.logout_click = function(){
         logoutService.post({}, function(logout_status){
             console.log(logout_status);
+            updateControllerService.user_logged_out();
             $window.location.href = '';
         });
     }

@@ -42,6 +42,7 @@ angular.module('ReviewBag', [
     'searchResults',
     'addTopic',
     'editInterest',
+    'updateController',
 ]);
 
 angular.module('ReviewBag').

@@ -64,7 +64,7 @@ class InterestController:
         for item in qs_list:
             item.delete()
         # Returning
-        return
+        return True
 
     def AddInterests(User, Data):
         for item in Data:
@@ -93,4 +93,4 @@ class InterestController:
                     )
                     # Saving the interest
                     new_interest.save()
-        return
+        return True

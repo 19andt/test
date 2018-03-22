@@ -6,8 +6,8 @@
                     <h2 style="display: inline;">{{ topic_selected }}</h2>
                     <h6 style="display: inline;"> - {{ topic_data.added_by.first_name }}</h6>
                     <h5 style="display: inline;"><a href="/new-review/{{ topic_selected }}">Write a review on it?</a></h5>
-                    <h5 style="display: inline;"  ng-hide="following_status"><input type="button" ng-click="following_status_changed()" value="Follow"></h5>
-                    <h5 style="display: inline;"  ng-show="following_status"><input type="button" ng-click="following_status_changed()" value="UnFollow"></h5>
+                    <h5 style="display: inline;"  ng-hide="interest_status"><input type="button" ng-click="interest_status_changed()" value="Follow"></h5>
+                    <h5 style="display: inline;"  ng-show="interest_status"><input type="button" ng-click="interest_status_changed()" value="UnFollow"></h5>
                 </div>
                 <div class="col-sm-9">
                     <div>

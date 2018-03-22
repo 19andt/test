@@ -12,6 +12,10 @@ app.controller('interestListController', function($rootScope, $scope, getInteres
 
     get_interest_list();
 
+    $scope.$on('InterestsUpdated', function(){
+        get_interest_list();
+    })
+
     function get_interest_list(){
         getInterestsService.get(function(data){
             if(data.UserAuthenticated){

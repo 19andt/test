@@ -6,7 +6,7 @@ app.component('topicReviewList', {
         templateUrl: '/ang/templates/topic-review-list.html'
     });
 
-app.controller('topicReviewListController', function($rootScope, $scope, $controller, $http, getTopicService, getReviewsTopicService, updateTopicService, editInterestService){
+app.controller('topicReviewListController', function($rootScope, $scope, $controller, $http, getTopicService, getReviewsTopicService, updateTopicService, editInterestService, updateControllerService){
     $controller('topicController', { $scope: $scope });
     $scope.topic_selected = $scope.topic_name
     $scope.description_editing = false
@@ -15,7 +15,7 @@ app.controller('topicReviewListController', function($rootScope, $scope, $contro
 
     get_topic();
     get_reviews();
-    get_following_status();
+    get_interest_status();
 
     $scope.start_editing = function(){
         $scope.description_editing = true;
@@ -36,25 +36,27 @@ app.controller('topicReviewListController', function($rootScope, $scope, $contro
         console.log('Topic saved.')
     }
 
-    $scope.following_status_changed = function(){
+    $scope.interest_status_changed = function(){
         var url_params = {
             topic_name: $scope.topic_name
         }
 
         var data = angular.toJson({
             topic_name: $scope.topic_name,
-            update_following_status: !$scope.following_status
+            update_interest_status: !$scope.interest_status
         })
 
         console.log(url_params)
 
         editInterestService.post(url_params, data, function(data){
-            $scope.following_status = data.FollowingStatus;
-
+            if(data.UpdateInterestStatus){
+                $scope.interest_status = data.InterestStatus;
+                updateControllerService.interests_updated();
+            }
         })
     }
 
-    function get_following_status(){
+    function get_interest_status(){
 
         var url_params = {
             topic_name: $scope.topic_name
@@ -63,7 +65,7 @@ app.controller('topicReviewListController', function($rootScope, $scope, $contro
         console.log(url_params)
 
         editInterestService.get(url_params, function(data){
-            $scope.following_status = data.FollowingStatus;
+            $scope.interest_status = data.InterestStatus;
         })
     }
 
