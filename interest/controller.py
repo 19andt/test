@@ -4,6 +4,13 @@ from topic.controller import TopicController
 
 class InterestController:
 
+    def GetInterest(User, Topic):
+        return interest.objects.filter(user=User, topic=Topic)
+
+    def DeleteInterest(User, Topic):
+        interest.objects.filter(user=User, topic=Topic).delete()
+        return True
+
     def GetInterests(User):
         # Getting the interests for a user
         return interest.objects.filter(user=User)

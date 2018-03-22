@@ -6,7 +6,7 @@ app.component('interest', {
         templateUrl: '/ang/templates/interest.html'
     });
 
-app.controller('interestController', function($rootScope, $scope, $window, $q, $timeout, getInterestService, searchTopicService, updateInterestService){
+app.controller('interestController', function($rootScope, $scope, $window, $q, $timeout, getInterestsService, searchTopicService, updateInterestsService){
 
     $scope.topic = ''
     $scope.search_topic = ''
@@ -16,7 +16,7 @@ app.controller('interestController', function($rootScope, $scope, $window, $q, $
     get_interest();
 
     function get_interest(){
-        getInterestService.get(function(data){
+        getInterestsService.get(function(data){
             if(data.UserAuthenticated){
                 $scope.selected_topics=[]
                 angular.forEach(data.InterestList, function(item){
@@ -61,7 +61,7 @@ app.controller('interestController', function($rootScope, $scope, $window, $q, $
         })
 
         console.log(interests)
-        updateInterestService.post(interests, function(data){
+        updateInterestsService.post(interests, function(data){
             if(data.UpdateInterestStatus){
                 $window.location.href = ''
             }

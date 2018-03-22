@@ -4,7 +4,7 @@ from django.views import View
 from interest.controller import InterestController
 
 
-class UpdateInterestView(View):
+class UpdateInterestsView(View):
     def post(self, request, *args, **kwargs):
         # Getting the data from the request
         data = json.loads(request.body.decode('utf-8'))

@@ -20,10 +20,10 @@ angular.module('ReviewBag', [
     'addUser',
     'authentication',
     'userAuthentication',
-    'getInterest',
+    'getInterests',
     'interest',
     'searchTopic',
-    'updateInterest',
+    'updateInterests',
     'interestList',
     'addReview',
     'newReview',
@@ -41,6 +41,7 @@ angular.module('ReviewBag', [
     'searchText',
     'searchResults',
     'addTopic',
+    'editInterest',
 ]);
 
 angular.module('ReviewBag').

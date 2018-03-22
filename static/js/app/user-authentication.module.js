@@ -20,12 +20,21 @@ app.controller('userAuthenticationController', function($rootScope, $scope, $win
         confirmPassword: '',
         tos: false
     }
+
     $scope.login = {
         email: '',
         password: '',
     }
     $scope.show_registration_error = false
     $scope.show_login_error = false
+
+    $scope.$watch('login', function(newValue, oldValue){
+        console.log($scope.login)
+    })
+
+    $scope.$watch('registration', function(newValue, oldValue){
+        console.log($scope.registration)
+    })
 
     $scope.registration_click = function(){
         var registration_data = angular.toJson({

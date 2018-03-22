@@ -1,9 +1,9 @@
 'use strict';
 
-var app = angular.module('getInterest', []);
+var app = angular.module('getInterests', []);
 
-app.service('getInterestService', function($http, $resource){
-    var url = '/interest/get_interest'
+app.service('getInterestsService', function($http, $resource){
+    var url = '/interest/get_interests'
     return $resource(url, {}, {
         get: {
             method: 'GET',

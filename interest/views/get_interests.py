@@ -5,7 +5,7 @@ from interest.controller import InterestController
 from topic.controller import TopicController
 
 
-class GetInterestView(View):
+class GetInterestsView(View):
     def get(self, request, *args, **kwargs):
         # Checking if the user is authenticated
         if request.user.is_authenticated():

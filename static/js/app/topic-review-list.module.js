@@ -6,7 +6,7 @@ app.component('topicReviewList', {
         templateUrl: '/ang/templates/topic-review-list.html'
     });
 
-app.controller('topicReviewListController', function($rootScope, $scope, $controller, $http, getTopicService, getReviewsTopicService, updateTopicService){
+app.controller('topicReviewListController', function($rootScope, $scope, $controller, $http, getTopicService, getReviewsTopicService, updateTopicService, editInterestService){
     $controller('topicController', { $scope: $scope });
     $scope.topic_selected = $scope.topic_name
     $scope.description_editing = false
@@ -15,6 +15,7 @@ app.controller('topicReviewListController', function($rootScope, $scope, $contro
 
     get_topic();
     get_reviews();
+    get_following_status();
 
     $scope.start_editing = function(){
         $scope.description_editing = true;
@@ -30,8 +31,40 @@ app.controller('topicReviewListController', function($rootScope, $scope, $contro
 
         updateTopicService.post(data, function(data){
             get_topic();
+            $scope.description_editing = false
         })
         console.log('Topic saved.')
+    }
+
+    $scope.following_status_changed = function(){
+        var url_params = {
+            topic_name: $scope.topic_name
+        }
+
+        var data = angular.toJson({
+            topic_name: $scope.topic_name,
+            update_following_status: !$scope.following_status
+        })
+
+        console.log(url_params)
+
+        editInterestService.post(url_params, data, function(data){
+            $scope.following_status = data.FollowingStatus;
+
+        })
+    }
+
+    function get_following_status(){
+
+        var url_params = {
+            topic_name: $scope.topic_name
+        }
+
+        console.log(url_params)
+
+        editInterestService.get(url_params, function(data){
+            $scope.following_status = data.FollowingStatus;
+        })
     }
 
     function get_topic(){

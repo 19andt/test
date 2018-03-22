@@ -6,6 +6,8 @@
                     <h2 style="display: inline;">{{ topic_selected }}</h2>
                     <h6 style="display: inline;"> - {{ topic_data.added_by.first_name }}</h6>
                     <h5 style="display: inline;"><a href="/new-review">Write a review on it?</a></h5>
+                    <h5 style="display: inline;"  ng-show="following_status"><input type="button" ng-click="following_status_changed()" value="Follow"></h5>
+                    <h5 style="display: inline;"  ng-hide="following_status"><input type="button" ng-click="following_status_changed()" value="UnFollow"></h5>
                 </div>
                 <div class="col-sm-9">
                     <div>
@@ -53,11 +55,9 @@
                 <div class="col-sm-3">
                     <h4>About</h4>
                     <hr>
-                    <p ng-show="description">{{ topic_data.description }}</p>
-                    <div ng-hide="description">
-                        <div ng-hide="description_editing">
-                            <input type="button" ng-click="start_editing()" value="Edit">
-                        </div>
+                    <div>
+                        <p  ng-hide="description_editing" ng-show="description">{{ topic_data.description }}</p>
+                        <input ng-hide="description_editing" type="button" ng-click="start_editing()" value="Edit">
                         <div ng-show="description_editing">
                             <form>
                                 <input type="text" ng-model="topic_data.description" placeholder="Add description....">

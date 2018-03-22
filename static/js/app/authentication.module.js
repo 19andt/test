@@ -14,7 +14,7 @@ app.service('authenticationService', function($location, $window, $timeout, chec
                     $window.location.href='/admin/';
                 }
                 else{
-                    if(data.user_authenticated){
+                    if(data.UserAuthenticated){
 
                     }
                     else{
