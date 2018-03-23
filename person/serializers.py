@@ -11,4 +11,4 @@ class PersonSerializer(serializers.ModelSerializer):
         # Defining the model for the serializer class
         model=person
         # Defining the fields for the serializer class
-        fields=('id', 'user', 'gender', 'mobile_number', 'type', 'updated', 'pic', 'width_field', 'height_field')
+        fields=('id', 'user', 'gender', 'mobile_number', 'bio', 'type', 'updated', 'pic', 'width_field', 'height_field')

@@ -7,8 +7,6 @@ from .views.person_detail import PersonDetailView
 from .rest_views import person_list, person_detail
 
 urlpatterns = [
-    # url for getting the person detail
-    url(r'get_detail/(?P<username>[\w-]+)', PersonDetailView.as_view()),
     # url for checking authentication
     url(r'check_authentication$', CheckAuthenticationView.as_view()),
     # url for adding the user
@@ -17,6 +15,8 @@ urlpatterns = [
     url(r'login', LoginView.as_view()),
     # url for logging out the user
     url(r'logout', LogoutView.as_view()),
+    # url for user profile
+    url(r'profile/(?P<username>[\w-]+)', PersonDetailView.as_view()),
 
     # rest framework
     url(r'^rest/api/$', person_list.as_view()),

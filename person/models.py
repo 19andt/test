@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 from django.conf import settings
 
@@ -18,6 +19,10 @@ def profile_pic_location(instance, filename):
     # Defining the profile pic location
     return 'profile/%s/%s' %(instance.id, filename)
 
+def scramble_uploaded_filename(instance, filename):
+    extension = filename.split(".")[-1]
+    return "profile/{}.{}".format(uuid.uuid4(), extension)
+
 
 class person(models.Model):
     # Foreign key of the User model
@@ -26,12 +31,14 @@ class person(models.Model):
     gender=models.CharField(max_length=1, choices=genders, default='M')
     # Field for the mobile number
     mobile_number=models.CharField(max_length=20)
+    # Field about user details
+    bio=models.TextField(default='')
     # Type of user
     type=models.CharField(max_length=20, choices=types, default='I')
     # Updated timestamp
     updated=models.DateTimeField(auto_now=True)
     # Profile photo
-    pic=models.ImageField(upload_to=profile_pic_location, null=True, blank=True, width_field='width_field', height_field='height_field')
+    pic=models.ImageField(upload_to=scramble_uploaded_filename, null=True, blank=True, width_field='width_field', height_field='height_field')
     # Width of the photo
     width_field=models.IntegerField(default=0)
     # Height of the photo

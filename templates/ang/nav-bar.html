@@ -48,7 +48,7 @@
                             {{ authentication_data.User.first_name }} <span class="glyphicon glyphicon-menu-down"></span>
                         </a>
                         <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-                            <li role="menuitem"><a href="profile/{{ user.username }}">Profile</a></li>
+                            <li role="menuitem"><a href="profile/{{ authentication_data.User.username }}">Profile</a></li>
                             <li class="divider"></li>
                             <li role="menuitem"><a href="" ng-click="logout_click()">Logout</a></li>
                         </ul>

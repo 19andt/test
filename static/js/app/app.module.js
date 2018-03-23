@@ -27,7 +27,7 @@ angular.module('ReviewBag', [
     'interestList',
     'addReview',
     'newReview',
-    'getReviewsUser',
+    'getReviewsForUser',
     'homeReviewList',
     'rbControllers',
     'updateRating',
@@ -43,6 +43,9 @@ angular.module('ReviewBag', [
     'addTopic',
     'editInterest',
     'updateController',
+    'profile',
+    'userProfile',
+    'getReviewsByUser',
 ]);
 
 angular.module('ReviewBag').
@@ -76,6 +79,9 @@ angular.module('ReviewBag').
                 }).
                 when('/search-results/:search_text', {
                     template: '<search-results></search-results>'
+                }).
+                when('/profile/:username', {
+                    template: '<profile></profile>'
                 }).
                 when('/test', {
                     template: '<test></test>'

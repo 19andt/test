@@ -1,13 +1,16 @@
 from django.conf.urls import url, include
 from .rest_views import review_list, review_detail
-from .views.get_reviews_user import GetReviewsUserView
+from .views.get_reviews_by_user import GetReviewsByUserView
+from .views.get_reviews_for_user import GetReviewsForUserView
 from .views.get_reviews_topic import GetReviewsTopicView
 from .views.add_review import AddReviewView
 from .views.get_review import GetReviewView
 
 urlpatterns = [
     # url to get the reviews by the user
-    url(r'^get_reviews_user', GetReviewsUserView.as_view()),
+    url(r'^get_reviews_by_user/(?P<username>[\w -]+)', GetReviewsByUserView.as_view()),
+    # url to get the reviews for the user
+    url(r'^get_reviews_for_user', GetReviewsForUserView.as_view()),
     # url to get the reviews by the topic
     url(r'^get_reviews_topic/(?P<topic_name>[\w -]+)', GetReviewsTopicView.as_view()),
     # url to add the review

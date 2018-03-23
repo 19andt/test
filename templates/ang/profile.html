@@ -1,0 +1,63 @@
+<div ng-app="profile" ng-controller="profileController">
+    <div class="container">
+        <div class="col-sm-10">
+            <div class="row">
+                <div class="col-sm-2">
+                    <img ng-show="person_data.pic" class="img-thumbnail img-responsive" ng-src="{{ person_data.pic }}" width="100">
+                    <img ng-hide="person_data.pic" class="img-thumbnail img-responsive" ng-src="http://127.0.0.1:8000/media/profile/default.png" width="100">
+                </div>
+                <div class="row col-sm-10">
+                    <h2>{{ person_data.user.first_name }}</h2>
+                    <div ng-show="primary_user">
+                        <h4 ng-hide="bio_editing" style="display: inline;">{{ person_data.bio }}</h4>
+                        <input ng-hide="bio_editing" ng-click="edit_bio()" style="display: inline;" type="button" value="Edit">
+                        <input ng-show="bio_editing" type="text" ng-model="person_data.bio" style="display: inline;">
+                        <input ng-show="bio_editing" ng-click="finish_edit_bio()" style="display: inline;" type="button" value="Update">
+                    </div>
+                    <div ng-hide="primary_user">
+                        <h4 style="display: inline;">{{ person_data.bio }}</h4>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div>
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="item in review_list">
+                        <div class="container" ng-app="rbControllers" ng-controller="reviewController">
+                            {{ review = item.review;"" }}
+                            {{ rating = item.rating;"" }}
+                            {{ topic_list = item.topic_list;"" }}
+
+                            <div class="row">
+                                <p ng-show="review.added_by.username==user.username"><b><a href="/profile/{{ review.added_by.username }}">You</a></b> have reviewed on <b><a href="/topic/{{ topic_list[0] }}">{{ topic_list[0] }}</a></b>.</p>
+                                <p ng-hide="review.added_by.username==user.username"><b><a href="/profile/{{ review.added_by.username }}">{{ review.added_by.first_name }}</a></b> has reviewed on <b><a href="/topic/{{ topic_list[0] }}">{{ topic_list[0] }}</a></b></p>
+                                <p>{{ review.caption }}</p>
+                                <p ng-bind-html="review.briefing"></p>
+                                <!--<ul class="list-inline">-->
+                                    <!--<li>-->
+                                        <!--<p>Tags:-</p>-->
+                                    <!--</li>-->
+                                    <!--<li ng-repeat="item in topic_list">-->
+                                        <!--<a href="/topic/{{ item }}">{{ item }}</a>-->
+                                    <!--</li>-->
+                                <!--</ul>-->
+                                <ul class="list-inline">
+                                    <li ng-repeat="i in rating_range">
+                                        <a ng-click="rating_click(i)">
+                                            <span class="fa fa-star fa-6"></span>
+                                        </a>
+                                    </li><li ng-repeat="i in negative_rating_range">
+                                        <a ng-click="rating_click(i)">
+                                            <span class="fa fa-star-o fa-6"></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <h6><small>{{ item.review.created|fromNowFilter }}</small></h6>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

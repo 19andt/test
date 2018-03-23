@@ -12,7 +12,21 @@ class ReviewController:
 
     def GetReviewsByUser(User):
         # Getting the review added by the user
-        return review.objects.filter(added_by=User)
+        reviews = review.objects.filter(added_by=User)
+
+        derived_list = {}
+
+        for index, review_item in enumerate(sorted(reviews, key=lambda x: x.created)[::-1]):
+            # Adding a dictionary object with the int as key and review and rating data as a part of another dictionary
+            derived_list[index] = {
+                'review': ReviewSerializer(review_item).data,
+                'rating': RatingController.GetRating(Person=User, Review=review_item),
+                'topic_list': ReviewTopicController.GetTopics(Review=review_item)
+            }
+
+        # Returning the derived list
+        return derived_list
+
 
     def GetReviewsByTopic(Topic):
         # Getting the reviews for a topic

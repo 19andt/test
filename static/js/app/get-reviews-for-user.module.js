@@ -1,9 +1,9 @@
 'use strict';
 
-var app = angular.module('getReviewsUser', []);
+var app = angular.module('getReviewsForUser', []);
 
-app.service('getReviewsUserService', function($http, $resource){
-    var url = '/review/get_reviews_user'
+app.service('getReviewsForUserService', function($http, $resource){
+    var url = '/review/get_reviews_for_user'
     return $resource(url, {}, {
         get: {
             method: 'GET',

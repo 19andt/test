@@ -4,7 +4,7 @@ from django.views import View
 from review.controller import ReviewController
 
 
-class GetReviewsUserView(View):
+class GetReviewsForUserView(View):
     def get(self, request, *args, **kwargs):
         # Checking if the user is authenticated
         if request.user.is_authenticated():

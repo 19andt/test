@@ -76,7 +76,6 @@ app.controller('topicReviewListController', function($rootScope, $scope, $contro
 
         getTopicService.get(url_params, function(data){
             $scope.topic_data = data.Topic;
-            $scope.description = $scope.topic_data.description;
             console.log($scope.topic_data);
         })
     }
