@@ -2,15 +2,71 @@
     <div class="row">
         <div class="row">
             <div class="col-sm-12 col-sm-offset-2">
-                <div class="container">
-                    <div>
-                        <h2 style="display: inline;">{{ topic_selected }}</h2>
-                        <h6 style="display: inline;"> - {{ topic_data.added_by.first_name }}</h6>
-                    </div>
-                    <div>
-                        <h5 style="display: inline;"><a href="/new-review/{{ topic_selected }}">Write a review on it?</a></h5>
-                        <h5 style="display: inline;"  ng-hide="interest_status"><input type="button" ng-click="interest_status_changed()" value="Follow"></h5>
-                        <h5 style="display: inline;"  ng-show="interest_status"><input type="button" ng-click="interest_status_changed()" value="UnFollow"></h5>
+                <div class="row">
+                    <div class="container">
+                        <div class="col-sm-2" ng-mouseover="mouse_over = true" ng-mouseleave="mouse_over = false">
+                            <img ng-show="topic_data.pic" class="img-thumbnail img-responsive" ng-src="{{ topic_data.pic }}" width="100">
+                            <img ng-hide="topic_data.pic" class="img-thumbnail img-responsive" ng-src="http://127.0.0.1:8000/media/profile/default.png" width="100">
+                            <p></p>
+                            <form name="picForm" ng-show="mouse_over || (pic_editing && pic)">
+                                <input ng-model="pic" ng-click="editing_pic()" type="button" ngf-select accept="image/*" value="Edit Photo">
+                                <p></p>
+                                <div layout="row" layout-align="start" flex>
+                                    <div class="col-sm">
+                                        <div ng-show="pic" ng-model="pic" ngf-drop ngf-pattern="image/*" class="cropArea">
+                                            <img-crop image="pic  | ngfDataUrl" result-image="croppedDataUrl" ng-init="croppedDataUrl=''"></img-crop>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm">
+                                        <div class="col-sm-offset-2" ng-show="pic">
+                                            <img ng-src="{{ croppedDataUrl }}" />
+                                            <p></p>
+                                            <button ng-show="pic" ng-click="upload_pic(croppedDataUrl, pic.name)">Submit</button>
+                                            <!--<mat-progress-spinner-->
+                                                <!--class="example-margin"-->
+                                                <!--color="primary"-->
+                                                <!--mode="determinate"-->
+                                                <!--value="progress">-->
+                                            <!--</mat-progress-spinner>-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <style>
+                                    .cropArea {
+                                        background: #E4E4E4;
+                                        overflow: hidden;
+                                        width:350px;
+                                        height:350px;
+                                    }
+                                    form .progress {
+                                        line-height: 15px;
+                                    }
+                                    .progress {
+                                        display: inline-block;
+                                        width: 100px;
+                                        border: 3px groove #CCC;
+                                    }
+                                    .progress div {
+                                        font-size: smaller;
+                                        background: orange;
+                                        width: 0;
+                                    }
+                                </style>
+                            </form>
+                        </div>
+                        <div class="row">
+                            <div class="row col-sm-5">
+                                <div class="row">
+                                    <h2 style="display: inline;">{{ topic_selected }}</h2>
+                                    <h6 style="display: inline;"> - {{ topic_data.added_by.first_name }}</h6>
+                                </div>
+                                <div class="row">
+                                    <h5 style="display: inline;"><a href="/new-review/{{ topic_selected }}">Write a review on it?</a></h5>
+                                    <h5 style="display: inline;"  ng-hide="interest_status"><input type="button" ng-click="interest_status_changed()" value="Follow"></h5>
+                                    <h5 style="display: inline;"  ng-show="interest_status"><input type="button" ng-click="interest_status_changed()" value="UnFollow"></h5>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-9">

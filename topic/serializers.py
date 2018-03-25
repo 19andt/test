@@ -11,4 +11,4 @@ class TopicSerializer(serializers.ModelSerializer):
         # Defining the model for the serializer class
         model=topic
         # Defining the fields for the serializer class
-        fields=('id', 'name', 'added_by', 'timestamp', 'description')
+        fields=('id', 'name', 'added_by', 'pic', 'timestamp', 'description')

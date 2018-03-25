@@ -6,10 +6,12 @@ app.component('topicReviewList', {
         templateUrl: '/ang/templates/topic-review-list.html'
     });
 
-app.controller('topicReviewListController', function($rootScope, $scope, $controller, $http, getTopicService, getReviewsTopicService, updateTopicService, editInterestService, updateControllerService){
+app.controller('topicReviewListController', function($rootScope, $scope, $controller, $route, $timeout, Upload, $http, topicDetailService, getReviewsTopicService, editInterestService, updateControllerService){
     $controller('topicController', { $scope: $scope });
     $scope.topic_selected = $scope.topic_name
     $scope.description_editing = false
+    $scope.mouse_over = false;
+    $scope.pic_editing = false;
 
     console.log($scope.topic_selected)
 
@@ -22,6 +24,10 @@ app.controller('topicReviewListController', function($rootScope, $scope, $contro
     }
 
     $scope.topic_save = function(){
+        var url_params = {
+            topic_name: $scope.topic_selected
+        }
+
         var data = angular.toJson({
             topic_name: $scope.topic_data.name,
             description: $scope.topic_data.description,
@@ -29,7 +35,7 @@ app.controller('topicReviewListController', function($rootScope, $scope, $contro
 
         console.log(data)
 
-        updateTopicService.post(data, function(data){
+        topicDetailService.post(url_params, data, function(data){
             get_topic();
             $scope.description_editing = false
         })
@@ -56,6 +62,33 @@ app.controller('topicReviewListController', function($rootScope, $scope, $contro
         })
     }
 
+    $scope.editing_pic = function(){
+        $scope.pic_editing = true;
+    }
+
+    $scope.upload_pic = function (dataUrl, name) {
+        Upload.upload({
+            url: 'http://test-rb.herokuapp.com/topic/detail/' + $scope.topic_name,
+            data: {
+                pic: Upload.dataUrltoBlob(dataUrl, name)
+            },
+        }).then(function (response) {
+            $timeout(function () {
+                $scope.result = response.data;
+                console.log($scope.result)
+                $scope.mouse_over = false;
+                $scope.pic_editing = false;
+                $route.reload();
+            });
+        }, function (response) {
+            if (response.status > 0) $scope.errorMsg = response.status
+                + ': ' + response.data;
+        }, function (evt) {
+            $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
+            console.log($scope.progress)
+        });
+    }
+
     function get_interest_status(){
 
         var url_params = {
@@ -74,7 +107,7 @@ app.controller('topicReviewListController', function($rootScope, $scope, $contro
             topic_name: $scope.topic_selected
         }
 
-        getTopicService.get(url_params, function(data){
+        topicDetailService.get(url_params, function(data){
             $scope.topic_data = data.Topic;
             console.log($scope.topic_data);
         })
