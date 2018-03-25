@@ -2,17 +2,67 @@
     <div class="container">
         <div class="col-sm-10">
             <div class="row">
-                <div class="col-sm-2">
+                <div class="col-sm-2" ng-mouseover="mouse_over = true" ng-mouseleave="mouse_over = false">
                     <img ng-show="person_data.pic" class="img-thumbnail img-responsive" ng-src="{{ person_data.pic }}" width="100">
                     <img ng-hide="person_data.pic" class="img-thumbnail img-responsive" ng-src="http://127.0.0.1:8000/media/profile/default.png" width="100">
+                    <p></p>
+                    <form name="picForm" ng-show="mouse_over || (pic_editing && pic)">
+                        <input ng-model="pic" ng-click="editing_pic()" type="button" ngf-select accept="image/*" value="Edit Photo">
+                        <p></p>
+                        <div layout="row" layout-align="start" flex>
+                            <div class="col-sm">
+                                <div ng-show="pic" ng-model="pic" ngf-drop ngf-pattern="image/*" class="cropArea">
+                                    <img-crop image="pic  | ngfDataUrl" result-image="croppedDataUrl" ng-init="croppedDataUrl=''"></img-crop>
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <div class="col-sm-offset-2" ng-show="pic">
+                                    <img ng-src="{{ croppedDataUrl }}" />
+                                    <p></p>
+                                    <button ng-show="pic" ng-click="upload_pic(croppedDataUrl, pic.name)">Submit</button>
+                                    <!--<mat-progress-spinner-->
+                                        <!--class="example-margin"-->
+                                        <!--color="primary"-->
+                                        <!--mode="determinate"-->
+                                        <!--value="progress">-->
+                                    <!--</mat-progress-spinner>-->
+                                </div>
+                            </div>
+                        </div>
+                        <style>
+                            .cropArea {
+                                background: #E4E4E4;
+                                overflow: hidden;
+                                width:350px;
+                                height:350px;
+                            }
+                            form .progress {
+                                line-height: 15px;
+                            }
+                            .progress {
+                                display: inline-block;
+                                width: 100px;
+                                border: 3px groove #CCC;
+                            }
+                            .progress div {
+                                font-size: smaller;
+                                background: orange;
+                                width: 0;
+                            }
+                        </style>
+                    </form>
                 </div>
                 <div class="row col-sm-10">
                     <h2>{{ person_data.user.first_name }}</h2>
                     <div ng-show="primary_user">
                         <h4 ng-hide="bio_editing" style="display: inline;">{{ person_data.bio }}</h4>
                         <input ng-hide="bio_editing" ng-click="edit_bio()" style="display: inline;" type="button" value="Edit">
-                        <input ng-show="bio_editing" type="text" ng-model="person_data.bio" style="display: inline;">
-                        <input ng-show="bio_editing" ng-click="finish_edit_bio()" style="display: inline;" type="button" value="Update">
+                        <div>
+                            <form>
+                                <input ng-show="bio_editing" type="text" ng-model="person_data.bio" style="display: inline;">
+                                <input ng-show="bio_editing" ng-click="finish_edit_bio()" style="display: inline;" type="submit" value="Update">
+                            </form>
+                        </div>
                     </div>
                     <div ng-hide="primary_user">
                         <h4 style="display: inline;">{{ person_data.bio }}</h4>
@@ -32,7 +82,9 @@
                                 <p ng-show="review.added_by.username==user.username"><b><a href="/profile/{{ review.added_by.username }}">You</a></b> have reviewed on <b><a href="/topic/{{ topic_list[0] }}">{{ topic_list[0] }}</a></b>.</p>
                                 <p ng-hide="review.added_by.username==user.username"><b><a href="/profile/{{ review.added_by.username }}">{{ review.added_by.first_name }}</a></b> has reviewed on <b><a href="/topic/{{ topic_list[0] }}">{{ topic_list[0] }}</a></b></p>
                                 <p>{{ review.caption }}</p>
-                                <p ng-bind-html="review.briefing"></p>
+                                <div class="row col-sm-9">
+                                    <p ng-bind-html="review.briefing"></p>
+                                </div>
                                 <!--<ul class="list-inline">-->
                                     <!--<li>-->
                                         <!--<p>Tags:-</p>-->
@@ -41,18 +93,20 @@
                                         <!--<a href="/topic/{{ item }}">{{ item }}</a>-->
                                     <!--</li>-->
                                 <!--</ul>-->
-                                <ul class="list-inline">
-                                    <li ng-repeat="i in rating_range">
-                                        <a ng-click="rating_click(i)">
-                                            <span class="fa fa-star fa-6"></span>
-                                        </a>
-                                    </li><li ng-repeat="i in negative_rating_range">
-                                        <a ng-click="rating_click(i)">
-                                            <span class="fa fa-star-o fa-6"></span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <h6><small>{{ item.review.created|fromNowFilter }}</small></h6>
+                                <div class="row col-sm-9">
+                                    <ul class="list-inline">
+                                        <li ng-repeat="i in rating_range">
+                                            <a ng-click="rating_click(i)">
+                                                <span class="fa fa-star fa-6"></span>
+                                            </a>
+                                        </li><li ng-repeat="i in negative_rating_range">
+                                            <a ng-click="rating_click(i)">
+                                                <span class="fa fa-star-o fa-6"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <h6><small>{{ item.review.created|fromNowFilter }}</small></h6>
+                                </div>
                             </div>
                         </div>
                     </li>

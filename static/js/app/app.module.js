@@ -10,6 +10,8 @@ angular.module('ReviewBag', [
     'angularMoment',
     'ngSanitize',
     'ui.bootstrap',
+    'ngFileUpload',
+    'ngImgCrop',
 
     // Internal
     'home',

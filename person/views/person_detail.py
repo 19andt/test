@@ -1,9 +1,10 @@
-import json
+import json, uuid
 from django.http import JsonResponse
 from django.views import View
 from person.models import person
 from person.serializers import PersonSerializer
 from user.get_user import GetUser
+from django.core.files.storage import FileSystemStorage
 
 
 class PersonDetailView(View):
@@ -36,8 +37,11 @@ class PersonDetailView(View):
 
 
     def post(self, request, username, *args, **kwargs):
-        # Getting the data from the request
-        data=json.loads(request.body.decode('utf-8'))
+        try:
+            # Getting the data from the request
+            data=json.loads(request.body.decode('utf-8'))
+        except:
+            data = {}
         # Checking if the username is empty
         if request.user.username == username:
             # Querying for the user
@@ -63,10 +67,16 @@ class PersonDetailView(View):
 
                 if data.get('mobile_number') != None:
                     current_person.mobile_number = data.get('mobile_number')
-                if data.get('pic') != None:
-                    current_person.pic = data.get('pic')
                 if data.get('bio') != None:
                     current_person.bio = data.get('bio')
+
+                # Procedure for storing images
+                if request.FILES.get('pic') != None:
+                    pic = request.FILES.get('pic')
+                    fs = FileSystemStorage()
+                    filename = fs.save('profile/' + str(uuid.uuid4()) + '.' + pic.name.split('.')[-1], pic)
+                    uploaded_file_url = fs.url(filename)
+                    current_person.pic = uploaded_file_url[7:]
                 # Saving the person details
                 current_person.save()
                 # Returning the response with update status of the user

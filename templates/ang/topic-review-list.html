@@ -1,5 +1,5 @@
 <div ng-app="topicReviewList" ng-controller="topicReviewListController">
-    <div>
+    <div class="row">
         <div class="row">
             <div class="col-sm-12 col-sm-offset-2">
                 <div class="container">
@@ -29,7 +29,10 @@
                                     <div class="row">
                                         <p ng-show="review.added_by.username==user.username"><b><a href="/profile/{{ review.added_by.username }}">You</a></b> have reviewed on <b><a href="/topic/{{ topic_list[0] }}">{{ topic_list[0] }}</a></b>.</p>
                                         <p ng-hide="review.added_by.username==user.username"><b><a href="/profile/{{ review.added_by.username }}">{{ review.added_by.first_name }}</a></b> has reviewed on <b><a href="/topic/{{ topic_list[0] }}">{{ topic_list[0] }}</a></b></p>
-                                        <p ng-bind-html="review.briefing"></p>
+                                        <p>{{ review.caption }}</p>
+                                        <div class="row col-sm-7">
+                                            <p ng-bind-html="review.briefing"></p>
+                                        </div>
                                         <!--<ul class="list-inline">-->
                                             <!--<li>-->
                                                 <!--<p>Tags:-</p>-->
@@ -38,18 +41,20 @@
                                                 <!--<a href="/topic/{{ item }}">{{ item }}</a>-->
                                             <!--</li>-->
                                         <!--</ul>-->
-                                        <ul class="list-inline">
-                                            <li ng-repeat="i in rating_range">
-                                                <a ng-click="rating_click(i)">
-                                                    <span class="fa fa-star fa-6"></span>
-                                                </a>
-                                            </li><li ng-repeat="i in negative_rating_range">
-                                                <a ng-click="rating_click(i)">
-                                                    <span class="fa fa-star-o fa-6"></span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <h6><small>{{ item.review.created|fromNowFilter }}</small></h6>
+                                        <div class="row col-sm-7">
+                                            <ul class="list-inline">
+                                                <li ng-repeat="i in rating_range">
+                                                    <a ng-click="rating_click(i)">
+                                                        <span class="fa fa-star fa-6"></span>
+                                                    </a>
+                                                </li><li ng-repeat="i in negative_rating_range">
+                                                    <a ng-click="rating_click(i)">
+                                                        <span class="fa fa-star-o fa-6"></span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <h6><small>{{ item.review.created|fromNowFilter }}</small></h6>
+                                        </div>
                                     </div>
                                 </div>
                             </li>
