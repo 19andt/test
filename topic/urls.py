@@ -2,7 +2,6 @@ from django.conf.urls import url, include
 from .rest_views import topic_list, topic_detail
 from .views.search_topic import SearchTopicView
 from .views.detail import DetailView
-from .views.update_topic import UpdateTopicView
 from .views.add_topic import AddTopicView
 
 urlpatterns = [
