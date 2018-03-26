@@ -59,6 +59,10 @@ class PersonDetailView(View):
                     user.first_name = data.get('full_name')
                 if data.get('email') != None:
                     user.email = data.get('email')
+                    print('Email Changed.')
+                if data.get('password') != None:
+                    user.set_password(data.get('password'))
+                    print('Password Changed.')
                 # Saving the user details
                 user.save()
 
@@ -77,6 +81,7 @@ class PersonDetailView(View):
                     filename = fs.save('profile/' + str(uuid.uuid4()) + '.' + pic.name.split('.')[-1], pic)
                     uploaded_file_url = fs.url(filename)
                     current_person.pic = uploaded_file_url[7:]
+
                 # Saving the person details
                 current_person.save()
                 # Returning the response with update status of the user

@@ -47,6 +47,7 @@ angular.module('ReviewBag', [
     'profile',
     'userProfile',
     'getReviewsByUser',
+    'credentials',
 ]);
 
 angular.module('ReviewBag').
@@ -83,6 +84,9 @@ angular.module('ReviewBag').
                 }).
                 when('/profile/:username', {
                     template: '<profile></profile>'
+                }).
+                when('/credentials', {
+                    template: '<credentials></credentials>'
                 }).
                 when('/test', {
                     template: '<test></test>'
