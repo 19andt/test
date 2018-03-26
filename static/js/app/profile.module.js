@@ -6,7 +6,7 @@ app.component('profile', {
         templateUrl: '/ang/templates/profile.html'
     });
 
-app.controller('profileController', function($rootScope, $scope, $routeParams, $route, $timeout, userProfileService, getReviewsByUserService, Upload){
+app.controller('profileController', function($rootScope, $scope, $location, $routeParams, $route, $timeout, userProfileService, getReviewsByUserService, Upload){
     $scope.username = $routeParams.username;
     $scope.bio_editing = false;
     $scope.mouse_over = false;
@@ -36,6 +36,10 @@ app.controller('profileController', function($rootScope, $scope, $routeParams, $
             console.log(data)
             $scope.bio_editing = false
         })
+    }
+
+    $scope.change_credentials_click = function(){
+        $location.path('/credentials');
     }
 
     $scope.editing_pic = function(){
