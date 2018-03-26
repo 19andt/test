@@ -12,3 +12,14 @@ class GetUser:
         else:
             # Returning empty
             return None
+
+    def get_user_by_email(email):
+        # Querying for the user
+        qs = User.objects.filter(email=email)
+        # Checking if the query result count is equal to one
+        if qs.count()==1:
+            # Returning the query result
+            return qs[0]
+        else:
+            # Returning empty
+            return None

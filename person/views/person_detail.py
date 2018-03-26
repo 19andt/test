@@ -58,6 +58,8 @@ class PersonDetailView(View):
                 if data.get('full_name') != None:
                     user.first_name = data.get('full_name')
                 if data.get('email') != None:
+                    if GetUser.get_user_by_email(email=data.get('email')) != None:
+                        return JsonResponse({'UpdateStatus': False})
                     user.email = data.get('email')
                     print('Email Changed.')
                 if data.get('password') != None:

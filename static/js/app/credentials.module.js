@@ -6,7 +6,7 @@ app.component('credentials', {
         templateUrl: '/ang/templates/credentials.html'
     });
 
-app.controller('credentialsController', function($rootScope, $scope, $window, $route, userProfileService, authenticationService){
+app.controller('credentialsController', function($rootScope, $scope, $window, $route, userProfileService, authenticationService, logoutService, updateControllerService){
     $scope.email = '';
     $scope.password = '';
     $scope.confirm_password = '';
@@ -29,7 +29,16 @@ app.controller('credentialsController', function($rootScope, $scope, $window, $r
                 if(data.UpdateStatus == true){
                     alert('Email changed successfully.\n\nLogin again....')
 
+                    logoutService.post({}, function(logout_status){
+                        console.log(logout_status);
+                        updateControllerService.user_logged_out();
+                        $window.location.href = '';
+                    });
+
                     $window.location.href = '/';
+                }else{
+                    alert('Email is already registered.')
+                    $scope.email = ''
                 }
             })
         }else{

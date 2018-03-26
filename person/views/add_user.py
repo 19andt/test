@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from django.views import View
 from django.contrib import auth
 from person.models import person
+from user.get_user import GetUser
 
 
 class AddUserView(View):
@@ -10,6 +11,9 @@ class AddUserView(View):
         # Getting the data from the request
         data=json.loads(request.body.decode('utf-8'))
         user=auth.get_user_model()
+
+        if GetUser.get_user_by_email(email=data.get('email')) != None:
+            return JsonResponse({'AddUserStatus': False})
 
         # Making the new user object
         new_user=user.objects.create(
