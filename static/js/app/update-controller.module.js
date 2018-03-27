@@ -21,5 +21,9 @@ app.service('updateControllerService', function($rootScope){
         $rootScope.$broadcast('NewUserRegistered');
     }
 
+    status.subscriptions_updated = function(){
+        $rootScope.$broadcast('SubscriptionsUpdated');
+    }
+
     return status
 });

@@ -6,7 +6,7 @@ app.component('profile', {
         templateUrl: '/ang/templates/profile.html'
     });
 
-app.controller('profileController', function($rootScope, $scope, $location, $routeParams, $route, $timeout, userProfileService, getReviewsByUserService, Upload){
+app.controller('profileController', function($rootScope, $scope, $location, $routeParams, $route, $timeout, userProfileService, getReviewsByUserService, Upload, subscriptionStatusService, updateControllerService){
     $scope.username = $routeParams.username;
     $scope.bio_editing = false;
     $scope.mouse_over = false;
@@ -16,6 +16,26 @@ app.controller('profileController', function($rootScope, $scope, $location, $rou
 
     get_user_profile();
     get_user_reviews();
+    get_subscription_status();
+
+    $scope.subscription_status_changed = function(){
+        var url_params = {
+            username: $scope.username
+        }
+
+        var data = angular.toJson({
+            update_subscription_status: !$scope.subscription_status
+        })
+
+        console.log(url_params)
+
+        subscriptionStatusService.post(url_params, data, function(data){
+            if(data.UpdateSubscriptionStatus){
+                $scope.subscription_status = data.SubscriptionStatus;
+                updateControllerService.interests_updated();
+            }
+        })
+    }
 
     $scope.edit_bio = function(){
         $scope.bio_editing = true;
@@ -107,6 +127,16 @@ app.controller('profileController', function($rootScope, $scope, $location, $rou
             $scope.review_list = data.ReviewsList;
             $scope.max_rating = data.MaxRating;
             console.log($scope.review_list);
+        })
+    }
+
+    function get_subscription_status(){
+        var url_params = {
+            username: $scope.username
+        }
+        subscriptionStatusService.get(url_params, function(data){
+            console.log(data);
+            $scope.subscription_status = data.SubscriptionStatus;
         })
     }
 });

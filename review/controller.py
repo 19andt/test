@@ -27,7 +27,6 @@ class ReviewController:
         # Returning the derived list
         return derived_list
 
-
     def GetReviewsByTopic(Topic):
         # Getting the reviews for a topic
         qs = ReviewTopicController.GetReviews(Topic=Topic)
@@ -55,7 +54,7 @@ class ReviewController:
 
         # Appending the reviews by the subscriptions to the list
         for subscription in subscriptions:
-            reviews.extend(list(ReviewController.GetReviewsByUser(User=subscription.reviewer)))
+            reviews.extend(list(ReviewController.ReviewsByUser(User=subscription.reviewer)))
 
         # Making a dictionary of reviews with ID as a key
         dictionary={}
@@ -81,6 +80,10 @@ class ReviewController:
 
         # Returning the derived list
         return derived_list
+
+    # Returning only review model objects
+    def ReviewsByUser(User):
+        return review.objects.filter(added_by=User)
 
     def GetReviewsForTopic(Topic, User):
         # Getting the reviews for a topic from the review controller

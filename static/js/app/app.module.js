@@ -48,6 +48,9 @@ angular.module('ReviewBag', [
     'userProfile',
     'getReviewsByUser',
     'credentials',
+    'getSubscriptionList',
+    'subscriptionList',
+    'subscriptionStatus',
 ]);
 
 angular.module('ReviewBag').

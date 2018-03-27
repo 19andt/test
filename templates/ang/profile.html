@@ -54,7 +54,9 @@
                 </div>
                 <div class="row col-sm-10">
                     <h2 style="display: inline;">{{ person_data.user.first_name }}</h2>
-                    <input class="btn btn-primary pull-right" style="display: inline;" type="button" ng-click="change_credentials_click()" value="Account Settings">
+                    <input ng-show="primary_user" class="btn btn-primary pull-right" style="display: inline;" type="button" ng-click="change_credentials_click()" value="Account Settings">
+                    <input ng-click="subscription_status_changed()" ng-show="subscription_status" class="btn btn-primary pull-right" style="display: inline;" type="button" value="Unsubscribe">
+                    <input ng-click="subscription_status_changed()" ng-hide="primary_user || subscription_status" class="btn btn-primary pull-right" style="display: inline;" type="button" value="Subscribe">
                     <div ng-show="primary_user">
                         <h4 ng-hide="bio_editing" style="display: inline;">{{ person_data.bio }}</h4>
                         <input ng-hide="bio_editing" ng-click="edit_bio()" style="display: inline;" type="button" value="Edit">
