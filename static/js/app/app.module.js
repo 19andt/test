@@ -51,6 +51,7 @@ angular.module('ReviewBag', [
     'getSubscriptionList',
     'subscriptionList',
     'subscriptionStatus',
+    'notification',
 ]);
 
 angular.module('ReviewBag').

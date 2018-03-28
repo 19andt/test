@@ -41,11 +41,21 @@
                     <li>
                         <a href="/interest" data-toggle="tooltip" title="Update interests.">Interests</a>
                     </li>
-                    <li>
-                        <a href="" data-toggle="tooltip" title="Notifications">Notifications</a>
+                    <li uib-dropdown="" class="dropdown open">
+                        <a href="" uib-dropdown-toggle="" class="dropdown-toggle" aria-haspopup="true" aria-expanded="true" ng-click="notification_click()">
+                            Notifications <span ng-show="notification_count > 0" class="badge">{{ notification_count }}</span>
+                        </a>
+                        <ul ng-show="notification_count > 0" class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                            <li ng-repeat="item in observers">
+                                <span><a href="profile/{{ item.observer.username }}">{{ item.observer.first_name }}</a> has subscribed you.</span>
+                            </li>
+                            <li ng-repeat="item in reviews">
+                                <span><a href="profile/{{ item.added_by.username }}">{{ item.added_by.first_name }} has written a review.</a></span>
+                            </li>
+                        </ul>
                     </li>
                     <li uib-dropdown="" class="dropdown open">
-                        <a href="#" uib-dropdown-toggle="" class="dropdown-toggle" aria-haspopup="true" aria-expanded="true">
+                        <a href="" uib-dropdown-toggle="" class="dropdown-toggle" aria-haspopup="true" aria-expanded="true">
                             {{ authentication_data.User.first_name }} <span class="glyphicon glyphicon-menu-down"></span>
                         </a>
                         <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">

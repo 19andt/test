@@ -85,6 +85,36 @@ class ReviewController:
     def ReviewsByUser(User):
         return review.objects.filter(added_by=User)
 
+    def ReviewsForUser(User):
+        # Getting the interests for the user
+        interests=InterestController.GetInterests(User=User)
+        # Getting the subscription for the user
+        subscriptions=SubscriptionController.GetSubscriptions(User=User)
+
+        # Making an empty list of reviews
+        reviews=[]
+
+        # Appending the reviews added by the user to the list
+        # reviews.extend(list(ReviewController.GetReviewsByUser(User=User)))
+
+        # Appending the reviews by the interest to the list
+        for interest in interests:
+            reviews.extend(list(ReviewController.GetReviewsByTopic(Topic=interest.topic)))
+
+        # Appending the reviews by the subscriptions to the list
+        for subscription in subscriptions:
+            reviews.extend(list(ReviewController.ReviewsByUser(User=subscription.reviewer)))
+
+        # Making a dictionary of reviews with ID as a key
+        dictionary={}
+
+        # Looping through each object in the review list
+        for obj in reviews:
+            dictionary[obj.pk]=obj
+
+        # Returning unique reviews from the dictionary
+        return dictionary.values()
+
     def GetReviewsForTopic(Topic, User):
         # Getting the reviews for a topic from the review controller
         reviews=list(ReviewController.GetReviewsByTopic(Topic=Topic))

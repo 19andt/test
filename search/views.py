@@ -1,4 +1,3 @@
-import os
 import json
 from django.http import JsonResponse
 from django.views.generic import View
@@ -14,12 +13,12 @@ class SearchTextView(View):
 
         user_list = []
         # Getting the users from the controller and appending it to the list
-        for item in GetUser.get_users(Name=data.get('search_text'))[:5]:
+        for item in GetUser.get_users(Name=data.get('search_text')):
             user_list.append(item)
 
         topic_list = []
         # Getting the topics from the controller and appending it to the list
-        for item in TopicController.GetTopics(Name=data.get('search_text'))[:5]:
+        for item in TopicController.GetTopics(Name=data.get('search_text')):
             topic_list.append(item)
         return JsonResponse({
             'SearchingFor': data.get('search_text'),

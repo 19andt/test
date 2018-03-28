@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from home.views import HomeView
 from ang.views import AngTemplateView
 from search.views import SearchTextView
+from notification.views import NotificationView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -33,6 +34,7 @@ urlpatterns = [
     url(r'^rating_detail/', include('rating_detail.urls')),
     url(r'^review_topic/', include('review_topic.urls')),
     url(r'^search', SearchTextView.as_view()),
+    url(r'^notification', NotificationView.as_view()),
 
 ]
 

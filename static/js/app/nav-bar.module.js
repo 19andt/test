@@ -6,12 +6,17 @@ app.component('navBar', {
         templateUrl: '/ang/templates/nav-bar.html'
     });
 
-app.controller('navBarController', function($rootScope, $scope, $location, $window, $q, $timeout, searchTextService, authenticationService, logoutService, updateControllerService) {
+app.controller('navBarController', function($rootScope, $scope, $location, $window, $q, $timeout, $interval, searchTextService, authenticationService, logoutService, updateControllerService, notificationService) {
     $scope.authentication_data = authenticationService.check_authentication();
     console.log($scope.authentication_data);
 
     $scope.search_text = null
     $scope.search_counter = 0
+    $scope.notification_count = 0
+
+    get_notifications();
+
+    $interval(get_notifications, 1000 * 20)
 
     $scope.search_query = function(search_text){
         var data = angular.toJson({
@@ -83,5 +88,25 @@ app.controller('navBarController', function($rootScope, $scope, $location, $wind
             updateControllerService.user_logged_out();
             $window.location.href = '';
         });
+    }
+
+    $scope.notification_click = function(){
+        if($scope.notification_count > 0){
+            notificationService.post(function(data){
+//                $scope.reviews = []
+//                $scope.observers = []
+//                $scope.notification_count = 0
+            })
+        }
+    }
+
+    function get_notifications(){
+        notificationService.get(function(data){
+            if(data.UserAuthenticated){
+                $scope.reviews = data.Reviews;
+                $scope.observers = data.Observers;
+                $scope.notification_count = data.Observers.length + data.Reviews.length;
+            }
+        })
     }
 });

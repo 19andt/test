@@ -27,3 +27,7 @@ class SubscriptionController:
     def DeleteSubscription(Observer, Reviewer):
         subscription.objects.filter(observer=Observer, reviewer=Reviewer).delete()
         return True
+
+    def GetObservers(User):
+        # Getting the observers for the user
+        return subscription.objects.filter(reviewer=User)

@@ -7,7 +7,7 @@
                 </div>
                 <div class="panel-collapse collapse in content">
                     <ul class="list-group">
-                        <li class="list-group-item" ng-repeat="item in subscription_list | orderBy:'toString()'">
+                        <li class="list-group-item" ng-repeat="item in subscription_list | orderBy: 'name'">
                             <a ng-href="/profile/{{ item.username }}">{{ item.name }}</a>
                         </li>
                     </ul>
