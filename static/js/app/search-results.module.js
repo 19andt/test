@@ -6,7 +6,7 @@ app.component('searchResults', {
         templateUrl: '/ang/templates/search-results.html'
     });
 
-app.controller('searchResultsController', function($rootScope, $scope, $routeParams, $location, searchTextService, getTopicService, addTopicService){
+app.controller('searchResultsController', function($rootScope, $scope, $routeParams, $location, searchTextService, topicDetailService, addTopicService){
     $scope.search_text = $routeParams.search_text;
     $scope.result = []
     $scope.topic_details = []
@@ -65,7 +65,7 @@ app.controller('searchResultsController', function($rootScope, $scope, $routePar
                     topic_name: $scope.search_results[item]
                 }
 
-                getTopicService.get(url_params, function(data){
+                topicDetailService.get(url_params, function(data){
                     $scope.topic_details.push(data.Topic)
                     console.log($scope.topic_details)
                 })

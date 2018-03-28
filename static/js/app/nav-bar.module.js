@@ -18,10 +18,34 @@ app.controller('navBarController', function($rootScope, $scope, $location, $wind
             search_text: search_text,
         })
 
-        var result = null
+        var result = []
 
         searchTextService.post(data, function(data){
-            result = data.TopicList
+            for(var item in data.UserList){
+                result.push({
+                    name: data.UserList[item].first_name,
+                    username: data.UserList[item].username,
+                    group: 'User'
+                })
+            }
+
+            for(var item in data.TopicList){
+                result.push({
+                    name: data.TopicList[item],
+                    group: 'Topic'
+                })
+            }
+
+            result = _(result)
+                        .groupBy('group')
+                        .map(function (g) {
+                            g[0].first_in_group = true;  // the first item in each group
+                            return g;
+                        })
+                        .flatten()
+                        .value();
+
+            console.log(result)
         })
 
         var deferred = $q.defer();
@@ -39,7 +63,11 @@ app.controller('navBarController', function($rootScope, $scope, $location, $wind
     })
 
     $scope.selectItem = function($suggestion, $model, $label){
-        $location.path('/topic/' + $label)
+        if($model.group == 'Topic'){
+            $location.path('/topic/' + $model.name)
+        }if($model.group == 'User'){
+            $location.path('/profile/' + $model.username)
+        }
         $scope.search_text = ''
     }
 

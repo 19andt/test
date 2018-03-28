@@ -34,3 +34,7 @@ class GetUser:
         else:
             # Returning empty
             return None
+
+    def get_users(Name):
+        # Returning the topics with the similar name
+        return User.objects.values('first_name', 'username').filter(first_name__icontains=Name)
