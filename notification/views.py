@@ -6,6 +6,7 @@ from subscription.controller import SubscriptionController
 from subscription.serializers import SubscriptionSerializer
 from review.controller import ReviewController
 from review.serializers import ReviewSerializer
+from review_topic.controller import ReviewTopicController
 
 
 class NotificationView(View):
@@ -23,7 +24,10 @@ class NotificationView(View):
 
             for item in ReviewController.ReviewsForUser(request.user):
                 if item.created > request.user.last_login and item.added_by != request.user:
-                    reviews.append(ReviewSerializer(item).data)
+                    reviews.append({
+                        'review': ReviewSerializer(item).data,
+                        'topic_list': ReviewTopicController.GetTopics(item)
+                    })
 
             # Returning the response with reviews and subscription list
             return JsonResponse({'Reviews': reviews, 'Observers': observers, 'UserAuthenticated': True})

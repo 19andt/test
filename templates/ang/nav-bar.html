@@ -50,7 +50,7 @@
                                 <span><a href="profile/{{ item.observer.username }}">{{ item.observer.first_name }}</a> has subscribed you.</span>
                             </li>
                             <li ng-repeat="item in reviews">
-                                <span><a href="profile/{{ item.added_by.username }}">{{ item.added_by.first_name }} has written a review.</a></span>
+                                <span><a href="profile/{{ item.review.added_by.username }}">{{ item.review.added_by.first_name }}</a> has reviewed on <a href="topic/{{ item.topic_list[0] }}">{{ item.topic_list[0] }}</a>.</span>
                             </li>
                         </ul>
                     </li>
