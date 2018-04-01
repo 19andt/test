@@ -16,7 +16,7 @@ class AddReviewView(View):
                 'added_by': request.user,
                 'topic_list': data.get('topic_list'),
                 'caption': data.get('caption'),
-                'briefing': data.get('briefing'),
+                'briefing': AddReviewView.resize_images(data.get('briefing')),
                 'rating': data.get('rating')
             }
             # Adding the new review into the database
@@ -26,3 +26,6 @@ class AddReviewView(View):
             else:
                 # Returning the response with unable add new review
                 return JsonResponse({'AddReviewStatus': False})
+
+    def resize_images(briefing):
+        return briefing.replace('<img', '<img style="width: 50%;"')

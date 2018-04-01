@@ -12,6 +12,7 @@ angular.module('ReviewBag', [
     'ui.bootstrap',
     'ngFileUpload',
     'ngImgCrop',
+    'textAngular',
 
     // Internal
     'home',

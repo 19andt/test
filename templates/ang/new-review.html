@@ -54,51 +54,12 @@
                     </md-input-container>
                     <md-input-container class="md-icon-float md-block">
                         <label>Briefing</label>
+                        <div text-angular="text-angular" ng-model="briefing"></div>
                         <!--<textarea ng-model="briefing" name="briefing" ng-required="true" md-select-on-focus></textarea>-->
-                        <div id="editor">
-                            <p>{{ briefing }}</p>
-                        </div>
-                        <script>
-                            var toolbarOptions = [
-                                [{ 'font': [] }],
-                                [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-                                [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-
-                                ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-                                ['blockquote', 'code-block'],
-
-                                [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-                                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-                                [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-                                [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-                                [{ 'direction': 'rtl' }],                         // text direction
-
-                                [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-                                [{ 'align': [] }],
-
-                                ['link', 'image', 'video', 'formula'],
-
-                                ['clean']                                         // remove formatting button
-                            ];
-                            var options = {
-                                debug: 'info',
-                                modules: {
-                                    toolbar: toolbarOptions
-                                },
-                                placeholder: 'Describe your view....',
-                                readOnly: false,
-                                theme: 'snow'
-                            };
-                            var quill = new Quill('div#editor', options);
-                            $('div#editor')
-                                .focusout(function(){
-                                    var scope = angular.element($("div#root")).scope();
-                                    scope.briefing = quill.root.innerHTML;
-                                    console.log(scope.briefing);
-                                    scope.$apply();
-                                    console.log(quill.root.innerHTML);
-                                })
-                        </script>
+                        <!--<div id="editor">-->
+                            <!--<p>{{ briefing }}</p>-->
+                        <!--</div>-->
+                        <!--<script src="static/js/app/quill-script.js"></script>-->
                         <div class="hint" style="color: grey; font-size: 12px;">Share your view.</div>
                         <div ng-messages="newReviewForm.briefing.$error">
                             <div ng-message="required'">Describe your idea.</div>
