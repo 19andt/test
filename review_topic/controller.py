@@ -1,4 +1,7 @@
+from collections import Counter
+from datetime import datetime, timedelta
 from .models import review_topic
+from topic.controller import TopicController
 
 
 class ReviewTopicController:
@@ -28,3 +31,15 @@ class ReviewTopicController:
             # Saving the row
             new_review_topic.save()
         return True
+
+    def GetTrendingTopics(days):
+        time_threshold = datetime.now() - timedelta(days=days)
+        print(time_threshold)
+        topics = review_topic.objects.values('topic').filter(created__gt=time_threshold)
+
+        topic_list = []
+        for topic in topics:
+            topic_list.append(TopicController.GetTopic(ID=topic.get('topic'))[0].name)
+
+        topic_list = [[i, j] for i, j in Counter(topic_list).most_common()[:10]]
+        return topic_list

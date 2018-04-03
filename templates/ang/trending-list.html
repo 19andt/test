@@ -1,0 +1,19 @@
+<div ng-app="trendingList" ng-controller="trendingListController">
+    <div class="row">
+        <div class="col-sm-1">
+            <interest-list></interest-list>
+            <subscription-list></subscription-list>
+        </div>
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="row">
+                <h1>Trending Topics</h1>
+                <hr>
+                <ul>
+                    <li ng-repeat="item in trending_topics">
+                        <span><a href="topic/{{ item[0] }}">{{ item[0] }}</a>: {{ item[1] }}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

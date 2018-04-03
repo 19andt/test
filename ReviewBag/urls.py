@@ -21,6 +21,7 @@ from home.views import HomeView
 from ang.views import AngTemplateView
 from search.views import SearchTextView
 from notification.views import NotificationView
+from trending.views import TrendingListView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -35,6 +36,8 @@ urlpatterns = [
     url(r'^review_topic/', include('review_topic.urls')),
     url(r'^search', SearchTextView.as_view()),
     url(r'^notification', NotificationView.as_view()),
+    url(r'^media', include('media.urls')),
+    url(r'^trending_list', TrendingListView.as_view()),
 
 ]
 

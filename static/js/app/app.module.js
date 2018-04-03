@@ -53,6 +53,8 @@ angular.module('ReviewBag', [
     'subscriptionList',
     'subscriptionStatus',
     'notification',
+    'trendingList',
+    'trending',
 ]);
 
 angular.module('ReviewBag').
@@ -92,6 +94,9 @@ angular.module('ReviewBag').
                 }).
                 when('/credentials', {
                     template: '<credentials></credentials>'
+                }).
+                when('/trending', {
+                    template: '<trending-list></trending-list>'
                 }).
                 when('/test', {
                     template: '<test></test>'

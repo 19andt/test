@@ -13,4 +13,4 @@ class RatingTopicSerializer(serializers.ModelSerializer):
         # Defining the serializer for the foreign key
         model=review_topic
         # Defining the serializer for the foreign key
-        fields=('id', 'review', 'topic')
+        fields=('id', 'review', 'topic', 'created')

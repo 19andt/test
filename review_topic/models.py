@@ -10,6 +10,9 @@ class review_topic(models.Model):
     review=models.ForeignKey(review)
     # Foreign key of the Topic model
     topic=models.ForeignKey(topic)
+    # Created timestamp
+    created=models.DateTimeField(auto_now_add=True)
+
 
     def __str__(self):
         # Name for the row in the database
