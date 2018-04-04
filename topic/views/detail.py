@@ -12,7 +12,7 @@ class DetailView(View):
         qs = TopicController.GetTopic(Name=topic_name)
         print(topic_name)
         # Returning the result
-        if qs.count == 0:
+        if qs.count() == 0:
             return JsonResponse({'Topic': None})
         else:
             return JsonResponse({'Topic': TopicSerializer(qs[0]).data})

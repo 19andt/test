@@ -6,7 +6,7 @@ app.component('topicReviewList', {
         templateUrl: '/ang/templates/topic-review-list.html'
     });
 
-app.controller('topicReviewListController', function($rootScope, $scope, $controller, $route, $timeout, Upload, $http, topicDetailService, getReviewsTopicService, editInterestService, updateControllerService){
+app.controller('topicReviewListController', function($rootScope, $scope, $controller, $route, $location, $timeout, Upload, $http, topicDetailService, getReviewsTopicService, editInterestService, updateControllerService){
     $controller('topicController', { $scope: $scope });
     $scope.topic_selected = $scope.topic_name
     $scope.description_editing = false
@@ -108,8 +108,12 @@ app.controller('topicReviewListController', function($rootScope, $scope, $contro
         }
 
         topicDetailService.get(url_params, function(data){
-            $scope.topic_data = data.Topic;
-            console.log($scope.topic_data);
+            if(data.Topic != null){
+                $scope.topic_data = data.Topic;
+                console.log($scope.topic_data);
+            }else{
+                $location.path('/');
+            }
         })
     }
 
