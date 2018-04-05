@@ -11,4 +11,4 @@ class ReviewSerializer(serializers.ModelSerializer):
         # Defining the serializer for the foreign key
         model=review
         # Defining the fields for the serializer class
-        fields=('id', 'added_by', 'caption', 'briefing', 'review_rating', 'created', 'updated', 'pic', 'width_field', 'height_field')
+        fields=('id', 'added_by', 'caption', 'briefing', 'review_rating', 'created', 'updated')
