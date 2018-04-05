@@ -59,6 +59,7 @@ angular.module('ReviewBag', [
     'getReview',
     'getComments',
     'addComment',
+    'getObserverCount',
 ]);
 
 angular.module('ReviewBag').

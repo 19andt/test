@@ -31,3 +31,7 @@ class SubscriptionController:
     def GetObservers(User):
         # Getting the observers for the user
         return subscription.objects.filter(reviewer=User)
+
+    def GetObserverCount(User):
+        # Getting observer count for the user
+        return subscription.objects.filter(reviewer=User).count()

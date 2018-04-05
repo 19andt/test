@@ -6,7 +6,7 @@ app.component('profile', {
         templateUrl: '/ang/templates/profile.html'
     });
 
-app.controller('profileController', function($rootScope, $scope, $location, $routeParams, $route, $timeout, userProfileService, getReviewsByUserService, Upload, subscriptionStatusService, updateControllerService){
+app.controller('profileController', function($rootScope, $scope, $location, $routeParams, $route, $timeout, userProfileService, getReviewsByUserService, Upload, subscriptionStatusService, updateControllerService, getObserverCountService){
     $scope.username = $routeParams.username;
     $scope.bio_editing = false;
     $scope.mouse_over = false;
@@ -17,6 +17,7 @@ app.controller('profileController', function($rootScope, $scope, $location, $rou
     get_user_profile();
     get_user_reviews();
     get_subscription_status();
+    get_observer_count();
 
     $scope.subscription_status_changed = function(){
         var url_params = {
@@ -137,6 +138,13 @@ app.controller('profileController', function($rootScope, $scope, $location, $rou
         subscriptionStatusService.get(url_params, function(data){
             console.log(data);
             $scope.subscription_status = data.SubscriptionStatus;
+        })
+    }
+
+    function get_observer_count(){
+        getObserverCountService.get(function(data){
+            console.log(data)
+            $scope.observer_count = data.ObserverCount
         })
     }
 });

@@ -16,7 +16,7 @@ app.controller('navBarController', function($rootScope, $scope, $location, $wind
 
     get_notifications();
 
-    $interval(get_notifications, 1000 * 3600)
+    $interval(get_notifications, 1000 * 20)
 
     $scope.search_query = function(search_text){
         var data = angular.toJson({
