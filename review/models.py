@@ -25,12 +25,6 @@ class review(models.Model):
     created=models.DateTimeField(auto_now_add=True)
     # Updated timestamp
     updated=models.DateTimeField(auto_now=True)
-    # Picture added to the review
-    pic=models.ImageField(upload_to=review_pic_location, null=True, blank=True, width_field='width_field', height_field='height_field')
-    # Width of the picture
-    width_field=models.IntegerField(default=0)
-    # Height of the picture
-    height_field=models.IntegerField(default=0)
 
     def __str__(self):
         # Name for the row in the database

@@ -1,12 +1,12 @@
 var app = angular.module('rbControllers')
 
-app.controller('reviewController', function($scope, $rootScope, updateRatingService){
+app.controller('reviewController', function($scope, $rootScope, $location, updateRatingService){
 
     $scope.review = null
     $scope.rating = null
     $scope.topic_list = []
 
-    $scope.$watch('rating["personal_rating"]', function(){
+    $scope.$watch('rating.personal_rating', function(){
         if($scope.rating != null){
             calculate_ranges(parseInt($scope.rating["personal_rating"]))
         }
@@ -37,5 +37,15 @@ app.controller('reviewController', function($scope, $rootScope, updateRatingServ
             }
         })
         $scope.rating['personal_rating'] = parseInt(n)
+    }
+
+    $scope.review_detail_click = function(event){
+        if(event.target.nodeName != 'A'){
+            if(event.target.nodeName == 'SPAN' && event.target.className == 'fa fa-star-o fa-6'){
+                return
+            }
+            console.log($scope.review.id)
+            $location.path('/review/' + $scope.review.id)
+        }
     }
 });

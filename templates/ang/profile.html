@@ -78,7 +78,7 @@
                 <h3 ng-hide="primary_user">{{ person_data.user.first_name }}'s reviews</h3>
                 <ul class="list-group">
                     <li class="list-group-item" ng-repeat="item in review_list">
-                        <div class="container" ng-app="rbControllers" ng-controller="reviewController">
+                        <div class="container" ng-app="rbControllers" ng-controller="reviewController" ng-click="review_detail_click($event)">
                             {{ review = item.review;"" }}
                             {{ rating = item.rating;"" }}
                             {{ topic_list = item.topic_list;"" }}

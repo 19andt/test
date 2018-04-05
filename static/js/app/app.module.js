@@ -55,6 +55,10 @@ angular.module('ReviewBag', [
     'notification',
     'trendingList',
     'trending',
+    'reviewDetail',
+    'getReview',
+    'getComments',
+    'addComment',
 ]);
 
 angular.module('ReviewBag').
@@ -97,6 +101,9 @@ angular.module('ReviewBag').
                 }).
                 when('/trending', {
                     template: '<trending-list></trending-list>'
+                }).
+                when('/review/:id', {
+                    template: '<review-detail></review-detail>'
                 }).
                 when('/test', {
                     template: '<test></test>'
