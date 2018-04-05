@@ -34,6 +34,7 @@ urlpatterns = [
     url(r'^rating/', include('rating.urls')),
     url(r'^rating_detail/', include('rating_detail.urls')),
     url(r'^review_topic/', include('review_topic.urls')),
+    url(r'^comment/', include('comment.urls')),
     url(r'^search', SearchTextView.as_view()),
     url(r'^notification', NotificationView.as_view()),
     url(r'^media', include('media.urls')),
