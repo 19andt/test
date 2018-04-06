@@ -38,7 +38,6 @@ angular.module('ReviewBag', [
     'topic',
     'topicReviewList',
     'getReviewsTopic',
-    'test',
     'topicDetail',
     'searchText',
     'searchResults',
@@ -105,9 +104,6 @@ angular.module('ReviewBag').
                 }).
                 when('/review/:id', {
                     template: '<review-detail></review-detail>'
-                }).
-                when('/test', {
-                    template: '<test></test>'
                 })
         }
     );
