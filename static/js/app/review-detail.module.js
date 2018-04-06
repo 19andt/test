@@ -17,7 +17,7 @@ app.controller('reviewDetailController', function($rootScope, $scope, $location,
     get_comments();
 
     $scope.add_comment = function(){
-        if($scope.new_comment.caption != null && $scope.new_comment.description != null){
+        if($scope.new_comment.description != ''){
 
             var data = angular.toJson({
                 review_id: $scope.id,

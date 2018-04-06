@@ -5,6 +5,7 @@ app.controller('reviewController', function($scope, $rootScope, $location, updat
     $scope.review = null
     $scope.rating = null
     $scope.topic_list = []
+    $scope.comment_list = []
 
     $scope.$watch('rating.personal_rating', function(){
         if($scope.rating != null){

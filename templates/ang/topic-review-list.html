@@ -81,6 +81,7 @@
                                     {{ review = item.review;"" }}
                                     {{ rating = item.rating;"" }}
                                     {{ topic_list = item.topic_list;"" }}
+                                    {{ comment_list = item.comment_list;"" }}
 
                                     <div class="row">
                                         <p ng-show="review.added_by.username==user.username"><b><a href="/profile/{{ review.added_by.username }}">You</a></b> have reviewed on <b><a href="/topic/{{ topic_list[0] }}">{{ topic_list[0] }}</a></b>.</p>
@@ -110,6 +111,19 @@
                                                 </li>
                                             </ul>
                                             <h6><small>{{ item.review.created|fromNowFilter }}</small></h6>
+                                        </div>
+                                        <div class="row col-sm-7">
+                                            <hr>
+                                            <ul  class="list-group" ng-if="comment_list.length >= 2">
+                                                <li  class="list-group-item" ng-repeat="index in [0, 1]">
+                                                    <span>{{ comment_list[index].description }} - <a href="/profile/{{ comment_list[index].user.username }}">{{ comment_list[index].user.first_name }}</a> {{ comment_list[index].created | fromNowFilter }}</span>
+                                                </li>
+                                            </ul>
+                                            <ul class="list-group" ng-if="comment_list.length < 2">
+                                                <li class="list-group-item" ng-repeat="comment in comment_list">
+                                                    <span>{{ comment.description }} - <a href="/profile/{{ comment.user.username }}">{{ comment.user.first_name }}</a> {{ comment.created | fromNowFilter }}</span>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>

@@ -5,6 +5,8 @@ from subscription.controller import SubscriptionController
 from rating.controller import RatingController
 from review_topic.controller import ReviewTopicController
 from topic.controller import TopicController
+from comment.controller import CommentController
+from comment.serializers import CommentSerializer
 from .serializers import ReviewSerializer
 
 
@@ -17,11 +19,19 @@ class ReviewController:
         derived_list = {}
 
         for index, review_item in enumerate(sorted(reviews, key=lambda x: x.created)[::-1]):
+            # Initializing the comment list
+            comment_list = []
+
+            # Getting comments
+            for comment in CommentController.GetCommments(Review=review_item):
+                comment_list.append(CommentSerializer(comment).data)
+
             # Adding a dictionary object with the int as key and review and rating data as a part of another dictionary
             derived_list[index] = {
                 'review': ReviewSerializer(review_item).data,
                 'rating': RatingController.GetRating(Person=User, Review=review_item),
-                'topic_list': ReviewTopicController.GetTopics(Review=review_item)
+                'topic_list': ReviewTopicController.GetTopics(Review=review_item),
+                'comment_list': comment_list
             }
 
         # Returning the derived list
@@ -71,11 +81,19 @@ class ReviewController:
 
         # Looping through each item in the unique review list
         for index, review_item in enumerate(sorted(reviews, key=lambda x: x.created)[::-1]):
+            # Initializing the comment list
+            comment_list = []
+
+            # Getting comments
+            for comment in CommentController.GetCommments(Review=review_item):
+                comment_list.append(CommentSerializer(comment).data)
+
             # Adding a dictionary object with the int as key and review and rating data as a part of another dictionary
             derived_list[index]={
                 'review': ReviewSerializer(review_item).data,
                 'rating': RatingController.GetRating(Person=User, Review=review_item),
-                'topic_list': ReviewTopicController.GetTopics(Review=review_item)
+                'topic_list': ReviewTopicController.GetTopics(Review=review_item),
+                'comment_list': comment_list
             }
 
         # Returning the derived list
@@ -124,11 +142,19 @@ class ReviewController:
 
         # Looping through each item in the review list
         for index, review_item in enumerate(sorted(reviews, key=lambda x: x.created)[::-1]):
+            # Initializing the comment list
+            comment_list = []
+
+            # Getting comments
+            for comment in CommentController.GetCommments(Review=review_item):
+                comment_list.append(CommentSerializer(comment).data)
+
             # Adding a dictionary object with the int as key and review and rating data as a part of another dictionary
             derived_list[index]={
                 'review': ReviewSerializer(review_item).data,
                 'rating': RatingController.GetRating(Person=User, Review=review_item),
-                'topic_list': ReviewTopicController.GetTopics(Review=review_item)
+                'topic_list': ReviewTopicController.GetTopics(Review=review_item),
+                'comment_list': comment_list
             }
 
         # Returning the derived list

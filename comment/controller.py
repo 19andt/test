@@ -6,7 +6,7 @@ class CommentController:
     def GetCommments(Review):
         if Review == None:
             return None
-        return comment.objects.filter(review=Review).order_by('created')
+        return comment.objects.filter(review=Review).order_by('-created')
 
     def AddComment(Data):
         new_comment = comment.objects.create(
