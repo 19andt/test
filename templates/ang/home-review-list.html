@@ -1,7 +1,7 @@
 <div ng-app="homeReviewList" ng-controller="homeReviewListController">
     <div>
-        <div class="row">
-            <div class="col-sm-10 col-sm-offset-2">
+        <div class="">
+            <div class="col-sm-12">
                 <ul class="list-group">
                     <li class="list-group-item" ng-repeat="item in review_list">
                         <div id="review_item" class="container" ng-app="rbControllers" ng-controller="reviewController" ng-click="review_detail_click($event)">
@@ -39,16 +39,16 @@
                                     </ul>
                                     <h6><small>{{ item.review.created|fromNowFilter }}</small></h6>
                                 </div>
-                                <div class="row col-sm-7">
+                                <div class="row col-sm-12" style="left: 15px;">
                                     <hr>
                                     <ul  class="list-group" ng-if="comment_list.length >= 2">
                                         <li  class="list-group-item" ng-repeat="index in [0, 1]">
-                                            <span>{{ comment_list[index].description }} - <a href="/profile/{{ comment_list[index].user.username }}">{{ comment_list[index].user.first_name }}</a> {{ comment_list[index].created | fromNowFilter }}</span>
+                                            <span>{{ comment_list[index].description }} - <a href="/profile/{{ comment_list[index].user.username }}">{{ comment_list[index].user.first_name }}</a> <h6 style="display: inline"><small>{{ comment_list[index].created | fromNowFilter }}</small></h6></span>
                                         </li>
                                     </ul>
                                     <ul class="list-group" ng-if="comment_list.length < 2">
                                         <li class="list-group-item" ng-repeat="comment in comment_list">
-                                            <span>{{ comment.description }} - <a href="/profile/{{ comment.user.username }}">{{ comment.user.first_name }}</a> {{ comment.created | fromNowFilter }}</span>
+                                            <span>{{ comment.description }} - <a href="/profile/{{ comment.user.username }}">{{ comment.user.first_name }}</a> <h6 style="display: inline"><small>{{ comment.created | fromNowFilter }}</small></h6></span>
                                         </li>
                                     </ul>
                                 </div>

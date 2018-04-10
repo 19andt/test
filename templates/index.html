@@ -5,6 +5,8 @@
         <meta charset="UTF-8">
         <title>ReviewBag</title>
 
+        <link href="https://fonts.googleapis.com/css?family=Allan|Arizonia|Bad+Script|Black+And+White+Picture|Caveat|Chewy|Chicle|Clicker+Script|Emilys+Candy|Engagement|Fontdiner+Swanky|Fugaz+One|Grand+Hotel|Jua|Kaushan+Script|Kelly+Slab|Libre+Barcode+128+Text|Lobster|Monofett|Montez|Mr+Dafoe|Oregano|Pacifico|Parisienne|Rock+Salt|Sacramento|Tangerine|Yeon+Sung|Yesteryear" rel="stylesheet">
+
         <!--Scripts-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 
@@ -33,9 +35,9 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ng-img-crop/0.3.2/ng-img-crop.css">
 
         <!--Bootstrap-->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>-->
+        <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.js"></script>-->
 
         <!--Text Angular-->
         <script src='http://textangular.com/dist/textAngular-rangy.min.js'></script>
@@ -49,9 +51,9 @@
         {% load static %}
 
         <!--CSS Files-->
-        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/rb.css' %}">
-
+        <!--<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">-->
+        <link rel="stylesheet" type="text/css" href="{% static 'css/rb.css' %}">
+        
         <!--External JS Files-->
 
         <!--Angular Files-->
@@ -104,9 +106,14 @@
 
     </head>
     <body>
-        {% csrf_token %}
-        <nav-bar></nav-bar>
-        <div class="col-sm-12" ng-view>
+        <div class="rb-main">
+            {% csrf_token %}
+            <div class="rb-navbar">
+                <nav-bar></nav-bar>
+            </div>
+            <div class="rb-content">
+                <div class="col-sm-12" ng-view></div>
+            </div>
         </div>
     </body>
 </html>

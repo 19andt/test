@@ -1,39 +1,41 @@
 <div ng-app="navBar" ng-controller="navBarController">
     <nav class="navbar navbar-default">
-        <div class="container-fluid">
+        <div class="container">
 
-            <!--Brand-->
-            <div class="navbar-header">
-                <a class="navbar-brand" ng-href="/">ReviewBag</a>
-            </div>
+            <div class="navbar-left">
+                <!--Brand-->
+                <div class="navbar-header">
+                    <a class="navbar-brand" ng-href="/">ReviewBag</a>
+                </div>
 
-            <!--Search Bar-->
-            <div class="navbar-header" ng-show="authentication_data.UserAuthenticated">
-                <form class="navbar-form" role="search" ng-submit="search_click()">
-                    <div class="input-group">
-                        <input
-                                type="text"
-                                class="form-control"
-                                placeholder="Search"
-                                ng-model="search_text"
-                                uib-typeahead="suggestion for suggestion in search_query($viewValue) | limitTo:2"
-                                typeahead-on-select="selectItem($suggestion, $model, $label)"
-                                typeahead-template-url="/ang/templates/typeahead-item.html">
-                        <div class="input-group-btn">
-                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                <!--Search Bar-->
+                <div class="navbar-header" ng-show="authentication_data.UserAuthenticated">
+                    <form class="navbar-form" role="search" ng-submit="search_click()">
+                        <div class="input-group">
+                            <input
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Search"
+                                    ng-model="search_text"
+                                    uib-typeahead="suggestion for suggestion in search_query($viewValue) | limitTo:2"
+                                    typeahead-on-select="selectItem($suggestion, $model, $label)"
+                                    typeahead-template-url="/ang/templates/typeahead-item.html">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
 
             <!--User Account-->
-            <div class="collapse navbar-collapse">
+            <div class="collapse navbar-collapse" style="margin-right: -40px;">
                 <ul class="nav navbar-nav navbar-right" ng-show="authentication_data.UserAuthenticated">
                     <li>
-                        <a href="/trending" data-toggle="tooltip" title="Trending Topic.">Trending</a>
+                         <a href="/trending" data-toggle="tooltip" title="Trending Topic.">Trending</a>
                     </li>
                     <li>
-                        <a href="/new-review" data-toggle="tooltip" title="Add a new review.">New Review</a>
+                        <a href="/new-review" data-toggle="tooltip" title="Add a new review.">Review</a>
                     </li>
                     <li>
                         <a href="/interest" data-toggle="tooltip" title="Update interests.">Interests</a>

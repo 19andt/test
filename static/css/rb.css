@@ -1,3 +1,161 @@
 a, a:active, a:focus {
-   outline: none;
+  outline: none;
+}
+
+a:hover{
+  text-decoration: none;
+}
+
+.rb-navbar{
+  position: fixed;
+  margin-top: -70px;
+  z-index: 1;
+}
+
+.rb-content{
+  margin-top: 70px;
+}
+
+.navbar{
+  background: white;
+  height: 50px;
+  font-size: 17px;
+  text-align: -moz-center;
+  border: #696c76;
+  border-radius: 0px;
+  width: 120%;
+}
+
+.navbar-left{
+  margin-left: -120px;
+}
+
+.navbar-header a.navbar-brand{
+  color: #696c76;
+  font-size: 25px;
+  font-weight: bold;
+  height: 50px;
+/*     font-family: 'Pacifico', cursive; */
+/*     font-family: 'Kaushan Script', cursive; */
+/*     font-family: 'Rock Salt', cursive; */
+/*     font-family: 'Fugaz One', cursive; */
+/*     font-family: 'Oregano', cursive; */
+}
+
+.navbar-header a.navbar-brand:hover{
+  color: white;
+  background: #696c76;
+}
+
+.navbar-header a.navbar-brand:focus{
+  color: #696c76;
+  background: white;
+}
+
+.collapse ul.navbar-right a{
+  color: #696c76;
+}
+
+.collapse ul.navbar-right a:hover{
+  color: white;
+  background: #696c76;
+}
+
+.collapse ul.navbar-right a:focus{
+  color: white;
+  background: #696c76;
+}
+
+.panel{
+  border: white;
+  background: white;
+}
+
+.panel-group .panel{
+  border-radius: 0px;
+}
+
+.panel-group .panel-heading{
+  background: #eeeeee;
+  height: 40px;
+}
+
+.panel-heading p{
+  color: #696c76;
+  border-radius: 0px;
+}
+
+.panel-collapse .list-group .list-group-item{
+  background: white;
+  border: white;
+}
+
+.panel-collapse .list-group .list-group-item a{
+  color: #696c76;
+  display: block;
+  height: inherit;
+}
+
+.main-content .list-group-item{
+  background: white;
+  border: white;
+  border-radius: 0px;
+}
+
+.list-group-item a{
+  color: #696c76;
+}
+
+.panel-collapse li.list-group-item:hover{
+  background: #f5f5f5;
+}
+
+
+#review_item{
+  width: 100%;
+}
+
+.topic-name{
+  left: -50px;
+}
+
+.person-name{
+  left: -30px;
+}
+
+.trending-topics, .review-detail{
+    top: -15px;
+}
+
+.side-bar{
+  left: -15px;
+  top: 51px;
+  position: fixed;
+}
+
+.main-content{
+  top: -19px;
+  left: 237px;
+}
+
+ul{
+  display: unset;
+}
+
+hr{
+  border-color: black;
+}
+
+body{
+  background: white;
+}
+
+*{
+  margin:0;
+  padding:0;
+}
+
+html, body {
+  height:100%;
+  background: #fafafa;
 }

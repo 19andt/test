@@ -1,11 +1,15 @@
 <div ng-app="home" ng-controller="homeController">
     <div class="row" ng-show="authentication_data.UserAuthenticated">
-        <div class="col-sm-1">
+        <div class="side-bar col-sm-1">
             <interest-list></interest-list>
             <subscription-list></subscription-list>
         </div>
-        <div class="col-sm-8">
-            <home-review-list></home-review-list>
+        <div class="main-content col-sm-7">
+            <div>
+                <div class="row">
+                    <home-review-list class="col-sm-12"></home-review-list>
+                </div>
+            </div>
         </div>
     </div>
 </div>

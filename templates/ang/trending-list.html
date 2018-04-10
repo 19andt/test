@@ -1,16 +1,16 @@
 <div ng-app="trendingList" ng-controller="trendingListController">
     <div class="row">
-        <div class="col-sm-1">
+        <div class="side-bar col-sm-1">
             <interest-list></interest-list>
             <subscription-list></subscription-list>
         </div>
-        <div class="col-sm-8 col-sm-offset-2">
-            <div class="row">
+        <div class="main-content col-sm-9">
+            <div class="trending-topics col-sm-10">
                 <h1>Trending Topics</h1>
                 <hr>
-                <ul>
-                    <li ng-repeat="item in trending_topics">
-                        <span><a href="topic/{{ item[0] }}">{{ item[0] }}</a>: {{ item[1] }}</span>
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="item in trending_topics">
+                        <h4><a href="topic/{{ item[0] }}">{{ item[0] }}</a> <small>{{ item[1] }} reviews since a week ago.</small></h4>
                     </li>
                 </ul>
             </div>

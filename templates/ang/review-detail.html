@@ -1,48 +1,52 @@
 <div>
     <div class="row">
-        <div class="col-sm-1">
+        <div class="side-bar col-sm-1">
             <interest-list></interest-list>
             <subscription-list></subscription-list>
         </div>
-        <div class="col-sm-8 col-sm-offset-2">
-            <div ng-app="reviewDetail" ng-controller="reviewDetailController">
-                <div>
-                    <h2><a href="/topic/{{ topic_list[0] }}">{{ topic_list[0] }}</a></h2>
-                    <h2 style="display: inline;">{{ review_data.caption }}</h2>
-                    <h4 style="display: inline;"> - <a href="/profile/{{ review_data.added_by.username }}">{{ review_data.added_by.first_name }}</a></h4>
-                </div>
-                <p></p>
-                <p ng-bind-html="review_data.briefing"></p>
-                <span>{{ review_data.created | fromNowFilter }}</span>
-                <hr>
-                <h4>Comments</h4>
-                <div>
-                    <div ng-show="comment_list.length == 0">
-                        <h5>No comments yet. Be the first one to comment!!</h5>
-                    </div>
-                    <ul class="list-group">
-                        <li class="list-group-item" ng-repeat="comment in comment_list">
-                            <!--<div>-->
-                                <!--<h4 style="display: inline;">{{ comment.caption }}</h4>-->
-                                <!--<h6 style="display: inline;"> - <a href="/profile/{{ comment.user.username }}">{{ comment.user.first_name }}</a></h6>-->
-                            <!--</div>-->
-                            <h4>{{ comment.description }}</h4>
-                            <h6 style="display: inline;">Commented by <a href="/profile/{{ comment.user.username }}">{{ comment.user.first_name }}</a></h6>
-                            <h6 style="display: inline;">{{ comment.created | fromNowFilter }}</h6>
-                        </li>
-                    </ul>
-                    <div class="well well-lg">
-                        <form name="commentForm" ng-submit="add_comment()">
-                            <!--<p>-->
-                                <!--<input name="caption" ng-required="true" class="form-control" type="text" placeholder="Caption" ng-model="new_comment.caption">-->
-                            <!--</p>-->
-                            <p>
-                                <textarea WRAP name="description" ngrequired="true" class="form-control" placeholder="Comment here..." ng-model="new_comment.description"></textarea>
-                            </p>
-                            <p>
-                                <input ng-disabled="commentForm.$invalid" type="submit" value="Comment" class="btn btn-primary pull-right">
-                            </p>
-                        </form>
+        <div class="main-content col-sm-9">
+            <div class="">
+                <div class="review-detail col-sm-12">
+                    <div ng-app="reviewDetail" ng-controller="reviewDetailController">
+                        <div>
+                            <h2><a href="/topic/{{ topic_list[0] }}">{{ topic_list[0] }}</a></h2>
+                            <h2 style="display: inline;">{{ review_data.caption }}</h2>
+                            <h4 style="display: inline;"> - <a href="/profile/{{ review_data.added_by.username }}">{{ review_data.added_by.first_name }}</a></h4>
+                        </div>
+                        <p></p>
+                        <p ng-bind-html="review_data.briefing"></p>
+                        <span>{{ review_data.created | fromNowFilter }}</span>
+                        <hr>
+                        <h4>Comments</h4>
+                        <div>
+                            <div ng-show="comment_list.length == 0">
+                                <h5>No comments yet. Be the first one to comment!!</h5>
+                            </div>
+                            <ul class="list-group">
+                                <li class="list-group-item" ng-repeat="comment in comment_list">
+                                    <!--<div>-->
+                                        <!--<h4 style="display: inline;">{{ comment.caption }}</h4>-->
+                                        <!--<h6 style="display: inline;"> - <a href="/profile/{{ comment.user.username }}">{{ comment.user.first_name }}</a></h6>-->
+                                    <!--</div>-->
+                                    <h4>{{ comment.description }}</h4>
+                                    <h6 style="display: inline;">Commented by <a href="/profile/{{ comment.user.username }}">{{ comment.user.first_name }}</a></h6>
+                                    <h6 style="display: inline;">{{ comment.created | fromNowFilter }}</h6>
+                                </li>
+                            </ul>
+                            <div class="well well-lg">
+                                <form name="commentForm" ng-submit="add_comment()">
+                                    <!--<p>-->
+                                        <!--<input name="caption" ng-required="true" class="form-control" type="text" placeholder="Caption" ng-model="new_comment.caption">-->
+                                    <!--</p>-->
+                                    <p>
+                                        <textarea WRAP name="description" ngrequired="true" class="form-control" placeholder="Comment here..." ng-model="new_comment.description"></textarea>
+                                    </p>
+                                    <p>
+                                        <input ng-disabled="commentForm.$invalid" type="submit" value="Comment" class="btn btn-primary pull-right">
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
