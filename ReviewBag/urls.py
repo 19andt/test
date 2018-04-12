@@ -26,6 +26,7 @@ from trending.views import TrendingListView
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^ang/templates/(?P<item>[A-Za-z0-9\_\-\.\/]+)\.html$', AngTemplateView.as_view()),
+    url(r'^user/', include('user.urls')),
     url(r'^person/', include('person.urls')),
     url(r'^topic/', include('topic.urls')),
     url(r'^interest/', include('interest.urls')),
