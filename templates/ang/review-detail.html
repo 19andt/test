@@ -15,7 +15,31 @@
                         </div>
                         <p></p>
                         <p ng-bind-html="review_data.briefing"></p>
-                        <span>{{ review_data.created | fromNowFilter }}</span>
+                        <div class="container" style="width: 100%">
+                            <div class="row" ng-app="rbControllers" ng-controller="reviewController">
+                                {{ review = review_data;"" }}
+                                {{ rating = rating_data;"" }}
+                                {{ username = current_user_username;"" }}
+
+                                <div class="row col-sm-7">
+                                    <ul class="list-inline">
+                                        <li ng-repeat="i in rating_range">
+                                            <a ng-click="rating_click(i)">
+                                                <span class="fa fa-star fa-6"></span>
+                                            </a>
+                                        </li><li ng-repeat="i in negative_rating_range">
+                                            <a ng-click="rating_click(i)">
+                                                <span class="fa fa-star-o fa-6"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p></p>
+                            <div class="row">
+                                <span>{{ review_data.created | fromNowFilter }}</span>
+                            </div>
+                        </div>
                         <hr>
                         <h4>Comments</h4>
                         <div>

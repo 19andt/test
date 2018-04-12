@@ -18,7 +18,7 @@ class GetReviewView(View):
                 # Returning the response with the review details
                 return JsonResponse({
                     'Review': ReviewSerializer(review).data,
-                    'Rating':RatingController.GetRating(Person=request.user, Review=review),
+                    'Rating': RatingController.GetRating(Person=request.user, Review=review),
                     'TopicList': ReviewTopicController.GetTopics(Review=review),
                     'MaxRating': 5})
             else:

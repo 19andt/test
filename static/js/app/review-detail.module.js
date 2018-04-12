@@ -6,7 +6,7 @@ app.component('reviewDetail', {
         templateUrl: '/ang/templates/review-detail.html'
     });
 
-app.controller('reviewDetailController', function($rootScope, $scope, $location, $routeParams, getReviewService, getCommentsService, addCommentService){
+app.controller('reviewDetailController', function($rootScope, $scope, $location, $routeParams, $window, getReviewService, getCommentsService, addCommentService, getLoggedInUserService){
     $scope.id = $routeParams.id;
     $scope.new_comment = {
         caption: '',
@@ -15,6 +15,7 @@ app.controller('reviewDetailController', function($rootScope, $scope, $location,
 
     get_review_detail();
     get_comments();
+    get_logged_in_user();
 
     $scope.add_comment = function(){
         if($scope.new_comment.description != ''){
@@ -43,9 +44,14 @@ app.controller('reviewDetailController', function($rootScope, $scope, $location,
             }
 
             getReviewService.get(url_params, function(data){
-                $scope.review_data = data.Review
-                $scope.rating = data.Rating
-                $scope.topic_list = data.TopicList
+                if(data.Review != null){
+                    $scope.review_data = data.Review
+                    $scope.rating_data = data.Rating
+                    $scope.topic_list = data.TopicList
+                    $scope.max_rating = data.MaxRating
+                }else{
+                    $window.location.href = '/';
+                }
             })
         }
     }
@@ -61,5 +67,16 @@ app.controller('reviewDetailController', function($rootScope, $scope, $location,
                 $scope.comment_list = data.CommentList
             })
         }
+    }
+
+    function get_logged_in_user(){
+        getLoggedInUserService.get(function(data){
+            console.log(data)
+            if(data.UserAuthenticated){
+               $scope.current_user_username = data.User.username
+            }else{
+                $window.location.href = '/';
+            }
+        })
     }
 });

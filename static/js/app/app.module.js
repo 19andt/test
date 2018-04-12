@@ -59,6 +59,7 @@ angular.module('ReviewBag', [
     'getComments',
     'addComment',
     'getObserverCount',
+    'getLoggedInUser',
 ]);
 
 angular.module('ReviewBag').

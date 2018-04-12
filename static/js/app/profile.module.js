@@ -6,7 +6,7 @@ app.component('profile', {
         templateUrl: '/ang/templates/profile.html'
     });
 
-app.controller('profileController', function($rootScope, $scope, $location, $routeParams, $route, $timeout, userProfileService, getReviewsByUserService, Upload, subscriptionStatusService, updateControllerService, getObserverCountService){
+app.controller('profileController', function($rootScope, $scope, $location, $routeParams, $route, $timeout, $window, userProfileService, getReviewsByUserService, Upload, subscriptionStatusService, updateControllerService, getObserverCountService){
     $scope.username = $routeParams.username;
     $scope.bio_editing = false;
     $scope.mouse_over = false;
@@ -114,6 +114,8 @@ app.controller('profileController', function($rootScope, $scope, $location, $rou
                 $scope.person_data = data.Person;
                 $scope.primary_user = data.PrimaryUser;
                 $scope.initials = get_initials();
+            }else{
+                $window.location.href = '/';
             }
         })
     }
