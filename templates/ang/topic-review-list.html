@@ -9,7 +9,7 @@
                             <img ng-hide="topic_data.pic" class="img-thumbnail img-responsive" ng-src="http://127.0.0.1:8000/media/profile/default.png" width="100">
                             <p></p>
                             <form name="picForm" ng-show="mouse_over || (pic_editing && pic)">
-                                <input ng-model="pic" ng-click="editing_pic()" type="button" ngf-select accept="image/*" value="Edit Photo">
+                                <input class="btn btn-primary" ng-model="pic" ng-click="editing_pic()" type="button" ngf-select accept="image/*" value="Edit Photo">
                                 <p></p>
                                 <div layout="row" layout-align="start" flex>
                                     <div class="col-sm">
@@ -21,7 +21,7 @@
                                         <div class="col-sm-offset-2" ng-show="pic">
                                             <img ng-src="{{ croppedDataUrl }}" />
                                             <p></p>
-                                            <button ng-show="pic" ng-click="upload_pic(croppedDataUrl, pic.name)">Submit</button>
+                                            <button class="btn btn-primary" ng-show="pic" ng-click="upload_pic(croppedDataUrl, pic.name)">Submit</button>
                                             <!--<mat-progress-spinner-->
                                                 <!--class="example-margin"-->
                                                 <!--color="primary"-->
@@ -62,8 +62,8 @@
                                 </div>
                                 <div class="row">
                                     <h5 style="display: inline;"><a href="/new-review/{{ topic_selected }}">Write a review on it?</a></h5>
-                                    <h5 style="display: inline;"  ng-hide="interest_status"><input type="button" ng-click="interest_status_changed()" value="Follow"></h5>
-                                    <h5 style="display: inline;"  ng-show="interest_status"><input type="button" ng-click="interest_status_changed()" value="UnFollow"></h5>
+                                    <h5 style="display: inline;"  ng-hide="interest_status"><input class="btn btn-primary" type="button" ng-click="interest_status_changed()" value="Follow"></h5>
+                                    <h5 style="display: inline;"  ng-show="interest_status"><input class="btn btn-primary" type="button" ng-click="interest_status_changed()" value="UnFollow"></h5>
                                 </div>
                             </div>
                         </div>
@@ -82,6 +82,7 @@
                                     {{ rating = item.rating;"" }}
                                     {{ topic_list = item.topic_list;"" }}
                                     {{ comment_list = item.comment_list;"" }}
+                                    {{ username = user.username;"" }}
 
                                     <div class="row">
                                         <p ng-show="review.added_by.username==user.username"><b><a href="/profile/{{ review.added_by.username }}">You</a></b> have reviewed on <b><a href="/topic/{{ topic_list[0] }}">{{ topic_list[0] }}</a></b>.</p>
@@ -112,18 +113,22 @@
                                             </ul>
                                             <h6><small>{{ item.review.created|fromNowFilter }}</small></h6>
                                         </div>
-                                        <div class="row col-sm-12" style="left: 15px;">
-                                            <hr>
-                                            <ul  class="list-group" ng-if="comment_list.length >= 2">
-                                                <li  class="list-group-item" ng-repeat="index in [0, 1]">
-                                                    <span>{{ comment_list[index].description }} - <a href="/profile/{{ comment_list[index].user.username }}">{{ comment_list[index].user.first_name }}</a> <h6 style="display: inline"><small>{{ comment_list[index].created | fromNowFilter }}</small></h6></span>
-                                                </li>
-                                            </ul>
-                                            <ul class="list-group" ng-if="comment_list.length < 2">
-                                                <li class="list-group-item" ng-repeat="comment in comment_list">
-                                                    <span>{{ comment.description }} - <a href="/profile/{{ comment.user.username }}">{{ comment.user.first_name }}</a> <h6 style="display: inline"><small>{{ comment.created | fromNowFilter }}</small></h6></span>
-                                                </li>
-                                            </ul>
+                                        <div class="comment row col-sm-12" ng-show="comment_list.length > 0">
+                                            <div class="comment-header">
+                                                <span><b>Comments</b></span>
+                                            </div>
+                                            <div class="comment-body">
+                                                <ul  class="list-group" ng-if="comment_list.length >= 2">
+                                                    <li  class="list-group-item" ng-repeat="index in [0, 1]">
+                                                        <span>{{ comment_list[index].description }} - <a href="/profile/{{ comment_list[index].user.username }}">{{ comment_list[index].user.first_name }}</a> <h6 style="display: inline"><small>{{ comment_list[index].created | fromNowFilter }}</small></h6></span>
+                                                    </li>
+                                                </ul>
+                                                <ul class="list-group" ng-if="comment_list.length < 2">
+                                                    <li class="list-group-item" ng-repeat="comment in comment_list">
+                                                        <span>{{ comment.description }} - <a href="/profile/{{ comment.user.username }}" ng-show="comment.user.username==username">You</a><a href="/profile/{{ comment.user.username }}" ng-hide="comment.user.username==username">{{ comment.user.first_name }}</a> <h6 style="display: inline"><small>{{ comment.created | fromNowFilter }}</small></h6></span>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -136,11 +141,11 @@
                     <hr>
                     <div>
                         <p  ng-hide="description_editing">{{ topic_data.description }}</p>
-                        <input ng-hide="description_editing" type="button" ng-click="start_editing()" value="Edit">
+                        <input class="btn btn-primary" ng-hide="description_editing" type="button" ng-click="start_editing()" value="Edit">
                         <div ng-show="description_editing">
                             <form>
                                 <input type="text" ng-model="topic_data.description" placeholder="Add description....">
-                                <input type="submit" ng-click="topic_save()" value="Update">
+                                <input class="btn btn-primary" type="submit" ng-click="topic_save()" value="Update">
                             </form>
                         </div>
                     </div>

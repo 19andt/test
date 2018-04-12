@@ -13,7 +13,8 @@ app.controller('homeReviewListController', function($rootScope, $scope, getRevie
         getReviewsForUserService.get(function(data){
             $scope.review_list = data.ReviewsList;
             $scope.max_rating = data.MaxRating;
-            console.log($scope.review_list);
+            $scope.user = data.User;
+            console.log($scope.user);
         });
     }
 });

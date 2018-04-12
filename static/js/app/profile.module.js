@@ -127,6 +127,7 @@ app.controller('profileController', function($rootScope, $scope, $location, $rou
         getReviewsByUserService.get(url_params, function(data){
             $scope.review_list = data.ReviewsList;
             $scope.max_rating = data.MaxRating;
+            $scope.user = data.User;
             console.log($scope.review_list);
         })
     }

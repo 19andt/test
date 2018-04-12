@@ -9,10 +9,11 @@
                             {{ rating = item.rating;"" }}
                             {{ topic_list = item.topic_list;"" }}
                             {{ comment_list = item.comment_list;"" }}
+                            {{ username = user.username;"" }}
 
                             <div class="row">
-                                <p ng-show="review.added_by.username==user.username"><b><a href="/profile/{{ review.added_by.username }}">You</a></b> have reviewed on <b><a href="/topic/{{ topic_list[0] }}">{{ topic_list[0] }}</a></b>.</p>
-                                <p ng-hide="review.added_by.username==user.username"><b><a href="/profile/{{ review.added_by.username }}">{{ review.added_by.first_name }}</a></b> has reviewed on <b><a href="/topic/{{ topic_list[0] }}">{{ topic_list[0] }}</a></b></p>
+                                <p ng-show="review.added_by.username==username"><b><a href="/profile/{{ review.added_by.username }}">You</a></b> have reviewed on <b><a href="/topic/{{ topic_list[0] }}">{{ topic_list[0] }}</a></b>.</p>
+                                <p ng-hide="review.added_by.username==username"><b><a href="/profile/{{ review.added_by.username }}">{{ review.added_by.first_name }}</a></b> has reviewed on <b><a href="/topic/{{ topic_list[0] }}">{{ topic_list[0] }}</a></b></p>
                                 <p>{{ review.caption }}</p>
                                 <div class="row col-sm-7">
                                     <p style="word-wrap: break-word;" ng-bind-html="review.briefing"></p>
@@ -39,18 +40,22 @@
                                     </ul>
                                     <h6><small>{{ item.review.created|fromNowFilter }}</small></h6>
                                 </div>
-                                <div class="row col-sm-12" style="left: 15px;">
-                                    <hr>
-                                    <ul  class="list-group" ng-if="comment_list.length >= 2">
-                                        <li  class="list-group-item" ng-repeat="index in [0, 1]">
-                                            <span>{{ comment_list[index].description }} - <a href="/profile/{{ comment_list[index].user.username }}">{{ comment_list[index].user.first_name }}</a> <h6 style="display: inline"><small>{{ comment_list[index].created | fromNowFilter }}</small></h6></span>
-                                        </li>
-                                    </ul>
-                                    <ul class="list-group" ng-if="comment_list.length < 2">
-                                        <li class="list-group-item" ng-repeat="comment in comment_list">
-                                            <span>{{ comment.description }} - <a href="/profile/{{ comment.user.username }}">{{ comment.user.first_name }}</a> <h6 style="display: inline"><small>{{ comment.created | fromNowFilter }}</small></h6></span>
-                                        </li>
-                                    </ul>
+                                <div class="comment row col-sm-12" ng-show="comment_list.length > 0">
+                                    <div class="comment-header">
+                                        <span><b>Comments</b></span>
+                                    </div>
+                                    <div class="comment-body">
+                                        <ul  class="list-group" ng-if="comment_list.length >= 2">
+                                            <li  class="list-group-item" ng-repeat="index in [0, 1]">
+                                                <span>{{ comment_list[index].description }} - <a href="/profile/{{ comment_list[index].user.username }}" ng-show="comment_list[index].user.username==username">You</a><a href="/profile/{{ comment_list[index].user.username }}" ng-hide="comment_list[index].user.username==username">{{ comment_list[index].user.first_name }}</a> <h6 style="display: inline"><small>{{ comment_list[index].created | fromNowFilter }}</small></h6></span>
+                                            </li>
+                                        </ul>
+                                        <ul class="list-group" ng-if="comment_list.length < 2">
+                                            <li class="list-group-item" ng-repeat="comment in comment_list">
+                                                <span>{{ comment.description }} - <a href="/profile/{{ comment.user.username }}" ng-show="comment.user.username==username">You</a><a href="/profile/{{ comment.user.username }}" ng-hide="comment.user.username==username">{{ comment.user.first_name }}</a> <h6 style="display: inline"><small>{{ comment.created | fromNowFilter }}</small></h6></span>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>

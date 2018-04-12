@@ -21,7 +21,7 @@ a:hover{
   height: 50px;
   font-size: 17px;
   text-align: -moz-center;
-  border: #696c76;
+  border-bottom-color: #ececec;
   border-radius: 0px;
   width: 120%;
 }
@@ -34,10 +34,10 @@ a:hover{
   color: #696c76;
   font-size: 25px;
   font-weight: bold;
-  height: 50px;
+  height: 48px;
 /*     font-family: 'Pacifico', cursive; */
 /*     font-family: 'Kaushan Script', cursive; */
-/*     font-family: 'Rock Salt', cursive; */
+    font-family: 'Rock Salt', cursive;
 /*     font-family: 'Fugaz One', cursive; */
 /*     font-family: 'Oregano', cursive; */
 }
@@ -54,6 +54,7 @@ a:hover{
 
 .collapse ul.navbar-right a{
   color: #696c76;
+  height: 48px;
 }
 
 .collapse ul.navbar-right a:hover{
@@ -66,13 +67,27 @@ a:hover{
   background: #696c76;
 }
 
+.collapse .menu-item{
+  height: 25px;
+}
+
+.collapse .menu-item a.link{
+  height: 100%;
+}
+
 .panel{
-  border: white;
+  border-color: #ececec;
   background: white;
+  border-radius: 3px;
+  height: 298px
 }
 
 .panel-group .panel{
-  border-radius: 0px;
+  border-radius: 3px;
+}
+
+.panel-group .panel-collapse{
+  height: 256px
 }
 
 .panel-group .panel-heading{
@@ -82,12 +97,12 @@ a:hover{
 
 .panel-heading p{
   color: #696c76;
-  border-radius: 0px;
+  border-radius: 3px;
 }
 
 .panel-collapse .list-group .list-group-item{
   background: white;
-  border: white;
+  border-width: 0px;
 }
 
 .panel-collapse .list-group .list-group-item a{
@@ -98,8 +113,30 @@ a:hover{
 
 .main-content .list-group-item{
   background: white;
-  border: white;
-  border-radius: 0px;
+  border-color: #ececec;
+  border-radius: 3px;
+  margin-top: 10px;
+}
+
+.main-content .comment{
+  margin-left: 1px
+}
+
+.main-content .comment .list-group{
+  background: #fafafa;
+}
+
+.main-content .comment .list-group-item{
+  background: #fafafa;
+  margin-top: 0px;
+}
+
+.main-content .comment-header{
+  color: #696c76;
+}
+
+.main-content .comment-body{
+  margin-left: -15px
 }
 
 .list-group-item a{
@@ -134,7 +171,7 @@ a:hover{
 }
 
 .main-content{
-  top: -19px;
+  top: -10px;
   left: 237px;
 }
 
@@ -143,7 +180,7 @@ ul{
 }
 
 hr{
-  border-color: black;
+  border-color: #696c76;
 }
 
 body{
