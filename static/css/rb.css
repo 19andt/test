@@ -42,6 +42,11 @@ a:hover{
 /*     font-family: 'Oregano', cursive; */
 }
 
+.navbar-header{
+  height: 50px;
+  width: 170px;
+}
+
 .navbar-header a.navbar-brand:hover{
   color: white;
   background: #696c76;

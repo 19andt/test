@@ -11,7 +11,8 @@
                         <div>
                             <h2><a href="/topic/{{ topic_list[0] }}">{{ topic_list[0] }}</a></h2>
                             <h2 style="display: inline;">{{ review_data.caption }}</h2>
-                            <h4 style="display: inline;"> - <a href="/profile/{{ review_data.added_by.username }}">{{ review_data.added_by.first_name }}</a></h4>
+                            <h4 ng-show="review_data.added_by.username==current_user_username" style="display: inline;"> - <a href="/profile/{{ review_data.added_by.username }}">You</a></h4>
+                            <h4 ng-hide="review_data.added_by.username==current_user_username" style="display: inline;"> - <a href="/profile/{{ review_data.added_by.username }}">{{ review_data.added_by.first_name }}</a></h4>
                         </div>
                         <p></p>
                         <p ng-bind-html="review_data.briefing"></p>
@@ -53,7 +54,8 @@
                                         <!--<h6 style="display: inline;"> - <a href="/profile/{{ comment.user.username }}">{{ comment.user.first_name }}</a></h6>-->
                                     <!--</div>-->
                                     <h4>{{ comment.description }}</h4>
-                                    <h6 style="display: inline;">Commented by <a href="/profile/{{ comment.user.username }}">{{ comment.user.first_name }}</a></h6>
+                                    <h6 ng-show="comment.user.username==current_user_username" style="display: inline;">Commented by <a href="/profile/{{ comment.user.username }}">You</a></h6>
+                                    <h6 ng-hide="comment.user.username==current_user_username" style="display: inline;">Commented by <a href="/profile/{{ comment.user.username }}">{{ comment.user.first_name }}</a></h6>
                                     <h6 style="display: inline;">{{ comment.created | fromNowFilter }}</h6>
                                 </li>
                             </ul>
