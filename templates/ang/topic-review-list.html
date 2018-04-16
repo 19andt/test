@@ -60,6 +60,7 @@
                                     <h2 style="display: inline;">{{ topic_selected }}</h2>
                                     <h6 style="display: inline;"> - <a href="profile/{{ topic_data.added_by.username }}">{{ topic_data.added_by.first_name }}</a></h6>
                                 </div>
+                                <p></p>
                                 <div class="row">
                                     <h5 style="display: inline;"><a href="/new-review/{{ topic_selected }}">Write a review on it?</a></h5>
                                     <h5 style="display: inline;"  ng-hide="interest_status"><input class="btn btn-primary" type="button" ng-click="interest_status_changed()" value="Follow"></h5>
