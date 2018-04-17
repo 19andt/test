@@ -18,7 +18,7 @@ a:hover{
 
 .navbar{
   background: #24292e;
-  height: 50px;
+  height: 65px;
   font-size: 17px;
   text-align: -moz-center;
   border-bottom-color: #ececec;
@@ -31,7 +31,7 @@ a:hover{
 }
 
 .navbar-header a.navbar-brand{
-  color: #c8c9ca;
+  color: white;
   font-size: 25px;
   font-weight: bold;
   height: 48px;
@@ -45,24 +45,25 @@ a:hover{
 .navbar-header{
   height: 50px;
   width: 170px;
+  margin-top: 6px;
 }
 
 .navbar-header a.navbar-brand:hover{
-  color: white;
+  color: #c8c9ca;
 }
 
 .navbar-header a.navbar-brand:focus{
-  color: #696c76;
-  background: white;
+  color: white;
 }
 
 .collapse ul.navbar-right a{
-  color: #c8c9ca;
+  color: white;
   height: 48px;
+  margin-top: 6px;
 }
 
 .collapse ul.navbar-right a:hover{
-  color: white;
+  color: #c8c9ca;
 }
 
 .collapse ul.navbar-right a:focus{
@@ -169,12 +170,12 @@ a:hover{
 
 .side-bar{
   left: -15px;
-  top: 51px;
+  top: 66px;
   position: fixed;
 }
 
 .main-content{
-  top: -10px;
+  top: 5px;
   left: 237px;
 }
 
