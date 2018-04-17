@@ -8,7 +8,7 @@ a:hover{
 
 .rb-navbar{
   position: fixed;
-  margin-top: -70px;
+  margin-top: -70px;lk
   z-index: 1;
 }
 
@@ -67,7 +67,9 @@ a:hover{
 }
 
 .collapse ul.navbar-right a:focus{
-  color: white;
+  color: #24292e;
+  background-color: white;
+  border-radius: 15px;
 }
 
 .collapse .menu-item{
@@ -75,7 +77,14 @@ a:hover{
 }
 
 .collapse .menu-item a.link{
+  color: #24292e;
   height: 100%;
+  border-radius: 5px;
+}
+
+.collapse .menu-item a.link:hover{
+  color: white;
+  background-color: #24292e;
 }
 
 .panel{
