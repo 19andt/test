@@ -41,19 +41,17 @@
                         <a href="/interest" data-toggle="tooltip" title="Update interests."><b>Interests</b></a>
                     </li>
                     <li uib-dropdown="" class="dropdown open">
-                        <div class="rb-dropdown">
-                            <a href="" uib-dropdown-toggle="" class="dropdown-toggle" aria-haspopup="true" aria-expanded="true" ng-click="notification_click()">
-                                <b>Notifications</b><span ng-show="notification_count > 0" class="badge">{{ notification_count }}</span>
-                            </a>
-                            <ul ng-show="notification_count > 0" class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
-                                <li class="menu-item" ng-repeat="item in observers">
-                                    <span><a href="profile/{{ item.observer.username }}">{{ item.observer.first_name }}</a> has subscribed you.</span>
-                                </li>
-                                <li class="menu-item" ng-repeat="item in reviews">
-                                    <span><a href="profile/{{ item.review.added_by.username }}">{{ item.review.added_by.first_name }}</a> has reviewed on <a href="topic/{{ item.topic_list[0] }}">{{ item.topic_list[0] }}</a>.</span>
-                                </li>
-                            </ul>
-                        </div>
+                        <a href="" uib-dropdown-toggle="" class="dropdown-toggle" aria-haspopup="true" aria-expanded="true" ng-click="notification_click()">
+                            <b>Notifications</b><span ng-show="notification_count > 0" class="badge">{{ notification_count }}</span>
+                        </a>
+                        <ul ng-show="notification_count > 0" class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                            <li class="menu-item" ng-repeat="item in observers">
+                                <span><a href="profile/{{ item.observer.username }}">{{ item.observer.first_name }}</a> has subscribed you.</span>
+                            </li>
+                            <li class="menu-item" ng-repeat="item in reviews">
+                                <span><a href="profile/{{ item.review.added_by.username }}">{{ item.review.added_by.first_name }}</a> has reviewed on <a href="topic/{{ item.topic_list[0] }}">{{ item.topic_list[0] }}</a>.</span>
+                            </li>
+                        </ul>
                     </li>
                     <li uib-dropdown="" class="dropdown open">
                         <a href="" uib-dropdown-toggle="" class="dropdown-toggle" aria-haspopup="true" aria-expanded="true">
