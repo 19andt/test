@@ -32,17 +32,17 @@
             <div class="collapse navbar-collapse" style="margin-right: -100px;">
                 <ul class="nav navbar-nav navbar-right" ng-show="authentication_data.UserAuthenticated">
                     <li>
-                         <a href="/trending" data-toggle="tooltip" title="Trending Topic.">Trending</a>
+                        <a href="/trending" data-toggle="tooltip" title="Trending Topic."><b>Trending</b></a>
                     </li>
                     <li>
-                        <a href="/new-review" data-toggle="tooltip" title="Add a new review.">Review</a>
+                        <a href="/new-review" data-toggle="tooltip" title="Add a new review."><b>Review</b></a>
                     </li>
                     <li>
-                        <a href="/interest" data-toggle="tooltip" title="Update interests.">Interests</a>
+                        <a href="/interest" data-toggle="tooltip" title="Update interests."><b>Interests</b></a>
                     </li>
                     <li uib-dropdown="" class="dropdown open">
                         <a href="" uib-dropdown-toggle="" class="dropdown-toggle" aria-haspopup="true" aria-expanded="true" ng-click="notification_click()">
-                            Notifications <span ng-show="notification_count > 0" class="badge">{{ notification_count }}</span>
+                            <b>Notifications</b><span ng-show="notification_count > 0" class="badge">{{ notification_count }}</span>
                         </a>
                         <ul ng-show="notification_count > 0" class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
                             <li class="menu-item" ng-repeat="item in observers">
@@ -55,7 +55,7 @@
                     </li>
                     <li uib-dropdown="" class="dropdown open">
                         <a href="" uib-dropdown-toggle="" class="dropdown-toggle" aria-haspopup="true" aria-expanded="true">
-                            {{ authentication_data.User.first_name }} <span class="glyphicon glyphicon-menu-down"></span>
+                            <b>{{ authentication_data.User.first_name }}</b> <span class="glyphicon glyphicon-menu-down"></span>
                         </a>
                         <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
                             <li class="menu-item" role="menuitem"><a class="link" href="profile/{{ authentication_data.User.username }}">Profile</a></li>
@@ -66,12 +66,12 @@
                         </ul>
                     </li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right" ng-hide="authentication_data.UserAuthenticated">
+                <ul class="nav navbar-nav navbar-right" style="margin-right: 10px;" ng-hide="authentication_data.UserAuthenticated">
                     <li>
-                        <a href="/user-authentication">Sign In</a>
+                        <a href="/user-authentication"><b>Sign In</b></a>
                     </li>
                     <li>
-                        <a href="/user-authentication">Sign Up</a>
+                        <a href="/user-authentication"><b>Sign Up</b></a>
                     </li>
                 </ul>
             </div>
