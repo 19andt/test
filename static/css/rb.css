@@ -17,11 +17,11 @@ a:hover{
 }
 
 .navbar{
-  background: #24292e;
-  height: 65px;
+  background:white;
+  height: 50px;
   font-size: 17px;
   text-align: -moz-center;
-  border-bottom-color: #ececec;
+  border-bottom-color:;
   border-radius: 0px;
   width: 120%;
 }
@@ -31,7 +31,7 @@ a:hover{
 }
 
 .navbar-header a.navbar-brand{
-  color: white;
+  color: #d20a0a;
   font-size: 25px;
   font-weight: bold;
   height: 48px;
@@ -43,52 +43,53 @@ a:hover{
 }
 
 .navbar-header{
-  height: 50px;
+  height: 100px;
   width: 170px;
-  margin-top: 6px;
+  margin-top: 0px;
 }
 
 .navbar-header a.navbar-brand:hover{
-  color: #c8c9ca;
+  color:#d20a0a;
 }
 
 .navbar-header a.navbar-brand:focus{
-  color: white;
+  color: #d20a0a;
 }
 
 .collapse ul.navbar-right a{
-  color: white;
-  height: 48px;
-  margin-top: 6px;
+  color: #d20a0a;
+  height:55px;
+  margin-top: 0px;
 }
 
 .collapse ul.navbar-right a:hover{
-  color: #c8c9ca;
+  color:black;
 }
 
 .collapse ul.navbar-right a:focus{
-  color: #24292e;
-  background-color: white;
-  border-radius: 15px;
+  color: white;
+  background-color:#d20a0a;
+  
 }
 
 .collapse .menu-item{
-  height: 25px;
+  height: 20px;
 }
 
 .collapse .menu-item a.link{
   color: #24292e;
-  height: 100%;
-  border-radius: 5px;
+  height: 30px;
+
 }
 
 .collapse .menu-item a.link:hover{
   color: white;
-  background-color: #24292e;
+  background-color: #d20a0a;
+  height: 30px;
 }
 
 .panel{
-  border-color: #ececec;
+  border-color: ##d20a0a;
   background: white;
   border-radius: 3px;
   height: 298px
@@ -207,4 +208,13 @@ body{
 html, body {
   height:100%;
   background: #fafafa;
+}
+
+.btn-default{
+      background-color: #d20a0a;
+      color:white;
+}
+
+.form-control {
+   border-color:#d20a0a;
 }
