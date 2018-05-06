@@ -60,6 +60,7 @@ angular.module('ReviewBag', [
     'addComment',
     'getObserverCount',
     'getLoggedInUser',
+    'oauth',
 ]);
 
 angular.module('ReviewBag').
@@ -105,6 +106,9 @@ angular.module('ReviewBag').
                 }).
                 when('/review/:id', {
                     template: '<review-detail></review-detail>'
+                }).
+                when('/oauth/:provider', {
+                    template: '<oauth></oauth>'
                 })
         }
     );

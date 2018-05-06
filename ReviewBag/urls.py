@@ -41,6 +41,7 @@ urlpatterns = [
     url(r'^media', include('media.urls')),
     url(r'^trending_list', TrendingListView.as_view()),
 
+    url(r'^all_auth/', include('allauth.urls')),
 ]
 
 if settings.DEBUG:

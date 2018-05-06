@@ -1,6 +1,8 @@
 import uuid
 from django.db import models
 from django.conf import settings
+from django.dispatch import receiver
+from allauth.account.signals import user_signed_up, user_logged_in
 
 # Create your models here.
 
@@ -43,7 +45,27 @@ class person(models.Model):
     width_field=models.IntegerField(default=0)
     # Height of the photo
     height_field=models.IntegerField(default=0)
+    # Pic from social_networking site
+    pic_url=models.TextField(default='')
 
     def __str__(self):
         # Name for the row in the database
         return str(self.user.get_full_name())
+
+    @receiver(user_signed_up)
+    def user_signed_up_(request, user, sociallogin=None, **kwargs):
+        print('New User Signed Up')
+
+        # Making the person object and adding the details to the person object
+        new_person = person()
+        new_person.user = user
+
+        if sociallogin.account.extra_data.get('picture') != None:
+            new_person.pic_url = sociallogin.account.extra_data.get('picture')
+
+        # Saving the person object
+        new_person.save()
+
+    @receiver(user_logged_in)
+    def user_logged_in(request, user, sociallogin=None, **kwargs):
+        print('User Logged In')
