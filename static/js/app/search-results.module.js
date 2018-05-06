@@ -33,7 +33,12 @@ app.controller('searchResultsController', function($rootScope, $scope, $routePar
     }
 
     function getting_search_results(){
-        var query_list = combine($scope.search_text)
+        var query_list = []
+        if($scope.search_text.length <= 5){
+            query_list = combine($scope.search_text)
+        }else{
+            query_list = [$scope.search_text]
+        }
         console.log(query_list)
         console.log(typeof query_list)
 
