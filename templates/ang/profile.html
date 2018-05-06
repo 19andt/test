@@ -5,7 +5,7 @@
                 <div class="col-sm-2" ng-mouseover="mouse_over = true" ng-mouseleave="mouse_over = false">
                     <img ng-show="person_data.pic" class="img-thumbnail img-responsive" ng-src="{{ person_data.pic }}" width="100">
                     <img ng-show="person_data.pic_url && !person_data.pic" class="img-thumbnail img-responsive" ng-src="{{ person_data.pic_url }}" width="100">
-                    <img ng-hide="person_data.pic && person_data.pic_url" class="img-thumbnail img-responsive" ng-src="http://127.0.0.1:8000/media/profile/default.png" width="100">
+                    <img ng-show="(!person_data.pic && !person_data.pic_url)" class="img-thumbnail img-responsive" ng-src="http://127.0.0.1:8000/media/profile/default.png" width="100">
                     <p></p>
                     <form name="picForm" ng-show="primary_user && mouse_over || (pic_editing && pic)">
                         <input class="btn btn-primary" ng-model="pic" ng-click="editing_pic()" type="button" ngf-select accept="image/*" value="Edit Photo">
