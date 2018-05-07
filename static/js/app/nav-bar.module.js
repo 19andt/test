@@ -6,7 +6,7 @@ app.component('navBar', {
         templateUrl: '/ang/templates/nav-bar.html'
     });
 
-app.controller('navBarController', function($rootScope, $scope, $location, $window, $q, $timeout, $interval, searchTextService, authenticationService, logoutService, updateControllerService, notificationService) {
+app.controller('navBarController', function($rootScope, $scope, $location, $window, $q, $timeout, $interval, $filter, searchTextService, authenticationService, logoutService, updateControllerService, notificationService) {
     $scope.authentication_data = authenticationService.check_authentication();
     console.log($scope.authentication_data);
 
@@ -26,17 +26,19 @@ app.controller('navBarController', function($rootScope, $scope, $location, $wind
         var result = []
 
         searchTextService.post(data, function(data){
-            for(var item in data.UserList){
+            var UserList = $filter('orderBy')(data.UserList, false)
+            for(var item in UserList.slice(0, 10)){
                 result.push({
-                    name: data.UserList[item].first_name,
-                    username: data.UserList[item].username,
+                    name: UserList[item].first_name,
+                    username: UserList[item].username,
                     group: 'User'
                 })
             }
 
-            for(var item in data.TopicList){
+            var TopicList = $filter('orderBy')(data.TopicList, false)
+            for(var item in TopicList.slice(0, 10)){
                 result.push({
-                    name: data.TopicList[item],
+                    name: TopicList[item],
                     group: 'Topic'
                 })
             }
