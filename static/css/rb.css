@@ -21,7 +21,8 @@ a:hover{
   height: 60px;
   font-size: 17px;
   text-align: -moz-center;
-  border-bottom-color:;
+  border-top-color: #d20a0a;
+  border-bottom-color: #d20a0a;
   border-radius: 0px;
   width: 120%;
 }
@@ -93,7 +94,7 @@ a:hover{
 }
 
 .panel{
-  border-color: #ececec;
+  border-color: #d20a0a;
   background: white;
   border-radius: 3px;
   height: 298px
@@ -108,12 +109,12 @@ a:hover{
 }
 
 .panel-group .panel-heading{
-  background: #eeeeee;
+  background: #d20a0a;
   height: 40px;
 }
 
 .panel-heading p{
-  color: #696c76;
+  color: white;
   border-radius: 3px;
 }
 
@@ -198,7 +199,32 @@ a:hover{
 }
 
 .input-search{
-   border-color:#d20a0a;
+  border-color: #d20a0a;
+}
+
+.square{
+  margin: auto;
+  width: 50%;
+  height: 300px;
+  position: relative;
+  background-color: white;
+  text-align: center;
+}
+
+.brand{
+  margin: auto;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.centre{
+  margin: auto;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 ul{
@@ -211,6 +237,7 @@ hr{
 
 body{
   background: white;
+  overflow: hidden;
 }
 
 *{

@@ -77,9 +77,6 @@ angular.module('ReviewBag').
                 when('/', {
                     template: '<home></home>'
                 }).
-                when('/user-authentication', {
-                    template: '<user-authentication></user-authentication>'
-                }).
                 when('/interest', {
                     template: '<interest></interest>'
                 }).
@@ -109,6 +106,9 @@ angular.module('ReviewBag').
                 }).
                 when('/oauth/:provider', {
                     template: '<oauth></oauth>'
+                }).
+                otherwise({
+                    template: 'Not Found'
                 })
         }
     );
