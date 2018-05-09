@@ -115,6 +115,7 @@ a:hover{
 
 .panel-heading p{
   color: white;
+  font-weight: bold;
   border-radius: 3px;
 }
 
