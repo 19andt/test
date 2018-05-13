@@ -21,10 +21,9 @@ a:hover{
   height: 60px;
   font-size: 17px;
   text-align: -moz-center;
-  border-top-color: #d20a0a;
-  border-bottom-color: #d20a0a;
   border-radius: 0px;
   width: 120%;
+  margin-top: -3px;
 }
 
 .navbar-left{
@@ -36,7 +35,7 @@ a:hover{
   color: #d20a0a;
   font-size: 25px;
   font-weight: bold;
-  height: 48px;
+  height: 60px;
 /*     font-family: 'Pacifico', cursive; */
 /*     font-family: 'Kaushan Script', cursive; */
     font-family: 'Rock Salt', cursive;
@@ -47,6 +46,7 @@ a:hover{
 .navbar-header{
   height: 60px;
   width: 170px;
+  margin-top: 2px;
 }
 
 .navbar-header a.navbar-brand:hover{
@@ -63,18 +63,18 @@ a:hover{
 
 .collapse ul.navbar-right a{
   color: #d20a0a;
-  height:55px;
+  height: 56px;
+  margin-top: 1px;
+  vertical-align: middle;
 }
 
 .collapse ul.navbar-right a:hover{
-  color: white;
-  background-color: #d20a0a;
+  color: #e46c6c;
 }
 
 .collapse ul.navbar-right a:focus{
   color: white;
-  background-color:#d20a0a;
-
+  background-color: #d20a0a;
 }
 
 .collapse .menu-item{
@@ -94,7 +94,6 @@ a:hover{
 }
 
 .panel{
-  border-color: #d20a0a;
   background: white;
   border-radius: 3px;
   height: 298px
@@ -228,6 +227,10 @@ a:hover{
   transform: translate(-50%, -50%);
 }
 
+.fa-star{
+  color: #d20a0a;
+}
+
 ul{
   display: unset;
 }
@@ -238,7 +241,6 @@ hr{
 
 body{
   background: white;
-  overflow: hidden;
 }
 
 *{
