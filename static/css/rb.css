@@ -321,6 +321,14 @@
    margin-top:75px;
   }
 
+  ul.list-group{
+    margin-top:20px;
+  }
+
+  div.col-sm-10.col-sm-offset-1{
+   margin-top:100px;
+  }
+
   .navbar-header a.navbar-brand:focus{
   }
 
