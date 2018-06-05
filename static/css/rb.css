@@ -307,10 +307,18 @@
 
   .navbar-header .navbar-brand{
     height: 50px;
+    position:fixed;
   }
 
   .navbar-header a.navbar-brand:hover{
     color: #d20a0a;
+  }
+
+  div.col-sm-8.col-sm-offset-2{
+  margin-top:100px;
+  }
+  .trending-topics.col-sm-10{
+   margin-top:75px;
   }
 
   .navbar-header a.navbar-brand:focus{
@@ -345,12 +353,14 @@
     vertical-align: middle;
     margin-left: -16px;
     margin-top: -2px;
+    padding: 20px 0px;
   }
 
   .mobile-nav ul{
     width: 100%;
     display: flex;
     justify-content: space-between;
+    margin-top:-10px;
   }
 
   .mobile-nav li{
