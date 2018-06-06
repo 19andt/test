@@ -6,7 +6,7 @@ app.component('interest', {
         templateUrl: '/ang/templates/interest.html'
     });
 
-app.controller('interestController', function($rootScope, $scope, $window, $q, $timeout, getInterestsService, searchTopicService, updateInterestsService){
+app.controller('interestController', function($rootScope, $scope, $window, $location, $q, $timeout, getInterestsService, searchTopicService, updateInterestsService){
 
     $scope.topic = ''
     $scope.search_topic = ''
@@ -63,7 +63,7 @@ app.controller('interestController', function($rootScope, $scope, $window, $q, $
         console.log(interests)
         updateInterestsService.post(interests, function(data){
             if(data.UpdateInterestStatus){
-                $window.location.href = ''
+                $location.path('/');
             }
         })
     }
