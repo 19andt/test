@@ -87,7 +87,7 @@
                     <li>
                         <a href="/interest">Interests</a>
                     </li>
-                    <li uib-dropdown="" class="dropdown" ng-disabled="notification_count <= 0">
+                    <li uib-dropdown="" class="dropdown notification" ng-disabled="notification_count <= 0">
                         <a href="" uib-dropdown-toggle="" class="dropdown-toggle" aria-haspopup="true" aria-expanded="true" ng-click="notification_click()">
                             <b>Notifications</b><span ng-show="notification_count > 0" class="badge">{{ notification_count }}</span>
                         </a>
@@ -100,7 +100,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li uib-dropdown="" class="dropdown">
+                    <li uib-dropdown="" class="dropdown profile">
                         <a href="" uib-dropdown-toggle="" class="dropdown-toggle" aria-haspopup="true" aria-expanded="true">
                             <b>You</b> <span class="glyphicon glyphicon-menu-down"></span>
                         </a>
