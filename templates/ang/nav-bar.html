@@ -78,7 +78,7 @@
 
             <div class="mobile-nav">
                 <ul>
-                    <li>
+                    <li class="trending">
                         <a href="/trending">Trending</a>
                     </li>
                     <li>
@@ -89,7 +89,7 @@
                     </li>
                     <li uib-dropdown="" class="dropdown notification" ng-disabled="notification_count <= 0">
                         <a href="" uib-dropdown-toggle="" class="dropdown-toggle" aria-haspopup="true" aria-expanded="true" ng-click="notification_click()">
-                            <b>Notifications</b><span ng-show="notification_count > 0" class="badge">{{ notification_count }}</span>
+                            <b>Notifs</b><span ng-show="notification_count > 0" class="badge">{{ notification_count }}</span>
                         </a>
                         <ul ng-show="notification_count > 0" class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
                             <li class="menu-item" ng-repeat="item in observers">
