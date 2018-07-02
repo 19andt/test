@@ -433,7 +433,7 @@
     display: block;
     background-color: #d20a0a;
     height: 22px;
-    width: 110%;
+    width: 111.8%;
     vertical-align: middle;
     margin-left: -16px;
     margin-top: 0px;
@@ -481,8 +481,16 @@
 
   .main-content{
     width: 100%;
-    margin-top: 80px;
     margin-left: -px;
+    margin-top: 80px;
+  }
+
+  trending-list .main-content{
+    margin-top: 120px;
+  }
+
+  interest div.col-sm-8.col-sm-offset-2{
+    margin-top: 135px;
   }
 
   .main-content .list-group-item{
