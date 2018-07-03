@@ -70,6 +70,20 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-sm-3">
+                    <h4>About</h4>
+                    <hr>
+                    <div>
+                        <p  ng-hide="description_editing">{{ topic_data.description }}</p>
+                        <input class="btn btn-primary" ng-hide="description_editing" type="button" ng-click="start_editing()" value="Edit">
+                        <div ng-show="description_editing">
+                            <form>
+                                <input type="text" ng-model="topic_data.description" placeholder="Add description....">
+                                <input class="btn btn-primary" type="submit" ng-click="topic_save()" value="Update">
+                            </form>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-sm-9">
                     <div>
                         <h4>Feed</h4>
@@ -135,20 +149,6 @@
                                 </div>
                             </li>
                         </ul>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <h4>About</h4>
-                    <hr>
-                    <div>
-                        <p  ng-hide="description_editing">{{ topic_data.description }}</p>
-                        <input class="btn btn-primary" ng-hide="description_editing" type="button" ng-click="start_editing()" value="Edit">
-                        <div ng-show="description_editing">
-                            <form>
-                                <input type="text" ng-model="topic_data.description" placeholder="Add description....">
-                                <input class="btn btn-primary" type="submit" ng-click="topic_save()" value="Update">
-                            </form>
-                        </div>
                     </div>
                 </div>
             </div>
