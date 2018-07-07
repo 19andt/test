@@ -1,5 +1,5 @@
 <div ng-app="home" ng-controller="homeController">
-    <div class="row" ng-show="authentication_data.UserAuthenticated">
+    <div class="row" data-ng-show="authentication_data.UserAuthenticated">
         <div class="side-bar col-sm-1">
             <interest-list></interest-list>
             <subscription-list></subscription-list>
@@ -12,7 +12,7 @@
             </div>
         </div>
     </div>
-    <div class="row" ng-hide="authentication_data.UserAuthenticated">
+    <div class="row" data-ng-hide="authentication_data.UserAuthenticated">
         <div class="container">
             <div class="square">
                 <div class="box">
