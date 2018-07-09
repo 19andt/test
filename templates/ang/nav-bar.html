@@ -1,5 +1,5 @@
 <div ng-app="navBar" ng-controller="navBarController">
-    <nav class="navbar navbar-default" ng-show="authentication_data.UserAuthenticated">
+    <nav class="navbar navbar-default">
         <div class="container">
 
             <div class="navbar-left">
@@ -68,10 +68,10 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right" style="margin-right: 10px;" ng-hide="authentication_data.UserAuthenticated">
                     <li>
-                        <a href="/user-authentication"><b>Sign In</b></a>
+                        <a href="/oauth/google"><b>Sign In</b></a>
                     </li>
                     <li>
-                        <a href="/user-authentication"><b>Sign Up</b></a>
+                        <a href="/oauth/google"><b>Sign Up</b></a>
                     </li>
                 </ul>
             </div>
