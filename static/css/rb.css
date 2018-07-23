@@ -43,7 +43,7 @@
   }
 
   .navbar-header a.navbar-brand{
-    color: #d20a0a;
+    color:  #b92b27;
     font-size: 25px;
     font-weight: bold;
     height: 60px;
@@ -61,11 +61,11 @@
   }
 
   .navbar-header a.navbar-brand:hover{
-    color:#d20a0a;
+    color:  #b92b27;
   }
 
   .navbar-header a.navbar-brand:focus{
-    color: #d20a0a;
+    color:  #b92b27;
   }
 
   .collapse .navbar-right{
@@ -73,7 +73,7 @@
   }
 
   .collapse ul.navbar-right a{
-    color: #d20a0a;
+    color:  #b92b27;
     height: 56px;
     margin-top: 1px;
     vertical-align: middle;
@@ -85,7 +85,7 @@
 
   .collapse ul.navbar-right a:focus{
     color: white;
-    background-color: #d20a0a;
+    background-color:  #b92b27;
   }
 
   .collapse .menu-item{
@@ -100,7 +100,7 @@
 
   .collapse .menu-item a.link:hover{
     color: white;
-    background-color: #d20a0a;
+    background-color: #b92b27;
     height: 30px;
   }
 
@@ -127,7 +127,7 @@
   }
 
   .panel-group .panel-heading{
-    background: #d20a0a;
+    background: #b92b27;
     height: 40px;
   }
 
@@ -212,13 +212,13 @@
   }
 
   .search{
-    background-color: #d20a0a;
+    background-color:  #b92b27;
     color:white;
-    border-color: #d20a0a;
+    border-color: #b92b27;
   }
 
   .input-search{
-    border-color: #d20a0a;
+    border-color: #b92b27;
   }
 
   .square{
@@ -247,7 +247,7 @@
   }
 
   .fa-star{
-    color: #d20a0a;
+    color: #b92b27;
   }
 
   ul{
@@ -263,11 +263,11 @@
   body{
     margin: 0;
     padding: 0;
-    background: #fafafa;
+    background: #e5e5e5;
   }
 
   html{
-    background: #fafafa;
+    background: #e5e5e5;
   }
 
   a, a:active, a:focus {
@@ -519,6 +519,7 @@
   }
 
   .main-content .comment .list-group-item{
+    background-color: #e5e5e5;
   }
 
   .main-content .comment-header{
