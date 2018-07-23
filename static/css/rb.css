@@ -263,11 +263,15 @@
   body{
     margin: 0;
     padding: 0;
-    background: #e5e5e5;
+    background:#f7f7f7;
   }
 
   html{
-    background: #e5e5e5;
+    background:#f7f7f7;
+  }
+
+  button.search.btn.btn-default{
+   border: 1px solid white;
   }
 
   a, a:active, a:focus {
@@ -519,7 +523,7 @@
   }
 
   .main-content .comment .list-group-item{
-    background-color: #e5e5e5;
+    background-color:#f7f7f7;
   }
 
   .main-content .comment-header{
