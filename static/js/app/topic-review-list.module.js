@@ -68,7 +68,7 @@ app.controller('topicReviewListController', function($rootScope, $scope, $contro
 
     $scope.upload_pic = function (dataUrl, name) {
         Upload.upload({
-            url: 'http://127.0.0.1:8000/topic/detail/' + $scope.topic_name,
+            url: 'http://test-rb.herokuapp.com/topic/detail/' + $scope.topic_name,
             data: {
                 pic: Upload.dataUrltoBlob(dataUrl, name)
             },
