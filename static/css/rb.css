@@ -562,6 +562,10 @@
   .input-search{
   }
 
+  search-results div.col-sm-11.col-sm-offset-2{
+    margin-top: 120px;
+  }
+
   .square{
   }
 
@@ -604,7 +608,6 @@
     margin-left: 30px;
     width: 90%;
   }
-
 
   ul{
   }
