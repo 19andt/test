@@ -69,7 +69,7 @@ app.controller('profileController', function($rootScope, $scope, $location, $rou
 
     $scope.upload_pic = function (dataUrl, name) {
         Upload.upload({
-            url: 'http://127.0.0.1:8000/person/profile/' + $scope.username,
+            url: 'http://test-rb.herokuapp.com/person/profile/' + $scope.username,
             data: {
                 pic: Upload.dataUrltoBlob(dataUrl, name)
             },
