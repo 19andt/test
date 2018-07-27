@@ -1,3 +1,7 @@
+.background-image{
+    background-color: red;
+}
+
 @media(min-width: 1025px){
   body{
     margin: 0;
