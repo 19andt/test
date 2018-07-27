@@ -1,5 +1,12 @@
 .background-image{
-    background-color: red;
+  background-image: url("http://test-rb.herokuapp.com/static/images/rb-background-outline.png");
+  background-repeat:  no-repeat;
+  background-position: center;
+  height: 800px;
+}
+
+.interest-background-image, .subscription-background-image{
+    display: none;
 }
 
 @media(min-width: 1025px){

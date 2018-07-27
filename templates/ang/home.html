@@ -1,8 +1,8 @@
 <div ng-app="home" ng-controller="homeController">
     <div class="row" data-ng-class="{'background-image':!authentication_data.UserAuthenticated}">
         <div class="side-bar col-sm-1">
-            <interest-list></interest-list>
-            <subscription-list></subscription-list>
+            <interest-list data-ng-class="{'interest-background-image':!authentication_data.UserAuthenticated}"></interest-list>
+            <subscription-list data-ng-class="{'subscription-background-image':!authentication_data.UserAuthenticated}"></subscription-list>
         </div>
         <div class="main-content col-sm-7">
             <div>
