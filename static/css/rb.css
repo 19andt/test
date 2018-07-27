@@ -544,7 +544,7 @@
   .main-content .comment .list-group{
   }
 
-  .main-content .comment .list-group-item{
+  .main-content .comment .list-group-item, profile .comment .list-group-item{
     background-color:#f7f7f7;
   }
 
