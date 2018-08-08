@@ -25,7 +25,7 @@ SECRET_KEY = 'c^l2_1r3xbe1$e$se*z(9#w1+9ku8=k372c3^dg5b82p%rp=&$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['test-rb.herokuapp.com', '0.0.0.0', '127.0.0.1']
+ALLOWED_HOSTS = ['test-rb.herokuapp.com', 'testing-rb.herokuapp.com', '0.0.0.0', '127.0.0.1']
 
 
 # Application definition
