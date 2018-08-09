@@ -7,10 +7,25 @@
 
         <link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
 
+        <meta name="viewport" content="width=device-width, height=device-height - 3000px, initial-scale=1, maximum-scale=1.0, user-scalable=1">
+        {% load static %}
+
+    </head>
+    <body>
+        <div class="rb-main">
+            {% csrf_token %}
+            <div class="rb-navbar">
+                <nav-bar></nav-bar>
+            </div>
+            <div class="rb-content">
+                <div class="col-sm-12" ng-view></div>
+            </div>
+        </div>
+
+        <!--Javascripts-->
+
         <!--Scripts-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-        <meta name="viewport" content="width=device-width, height=device-height - 3000px, initial-scale=1, maximum-scale=1.0, user-scalable=1">
 
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-resource.js"></script>
@@ -50,12 +65,10 @@
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,300">
         <link rel="stylesheet" href="http://textangular.com/dist/textAngular.css" type="text/css">
 
-        {% load static %}
-
         <!--CSS Files-->
         <!--<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">-->
         <link rel="stylesheet" type="text/css" href="{% static 'css/rb.css' %}">
-        
+
         <!--External JS Files-->
 
         <!--Angular Files-->
@@ -107,17 +120,5 @@
         <script src="{% static 'js/min/get-observer-count.module.min.js' %}"></script>
         <script src="{% static 'js/min/get-logged-in-user.module.min.js' %}"></script>
         <script src="{% static 'js/min/oauth.module.min.js' %}"></script>
-
-    </head>
-    <body>
-        <div class="rb-main">
-            {% csrf_token %}
-            <div class="rb-navbar">
-                <nav-bar></nav-bar>
-            </div>
-            <div class="rb-content">
-                <div class="col-sm-12" ng-view></div>
-            </div>
-        </div>
     </body>
 </html>
