@@ -1,3 +1,7 @@
+.rb-heading{
+  color: #b92b27;
+}
+
 @media(min-width: 1025px){
   body{
     margin: 0;

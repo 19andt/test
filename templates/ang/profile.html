@@ -54,7 +54,7 @@
                     </form>
                 </div>
                 <div class="person-name row col-sm-10">
-                    <h2 style="display: inline;">{{ person_data.user.first_name }}</h2>
+                    <h2 class="rb-heading" style="display: inline;">{{ person_data.user.first_name }}</h2>
                     <input ng-click="subscription_status_changed()" ng-show="subscription_status" class="btn btn-primary pull-right" style="display: inline;" type="button" value="Unsubscribe">
                     <input ng-click="subscription_status_changed()" ng-hide="primary_user || subscription_status" class="btn btn-primary pull-right" style="display: inline;" type="button" value="Subscribe">
                     <div ng-show="primary_user">
@@ -77,8 +77,8 @@
             </div>
             <hr>
             <div>
-                <h3 ng-show="primary_user">Your Stuff</h3>
-                <h3 ng-hide="primary_user">{{ person_data.user.first_name }}'s reviews</h3>
+                <h3 class="rb-heading" ng-show="primary_user">Your Stuff</h3>
+                <h3 class="rb-heading" ng-hide="primary_user">{{ person_data.user.first_name }}'s reviews</h3>
                 <ul class="list-group">
                     <li class="list-group-item" ng-repeat="item in review_list">
                         <div id="review_item" class="container" ng-app="rbControllers" ng-controller="reviewController" ng-click="review_detail_click($event)">

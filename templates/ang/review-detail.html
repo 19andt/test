@@ -15,7 +15,7 @@
                             <h4 ng-hide="review_data.added_by.username==current_user_username" style="display: inline;"> - <a href="/profile/{{ review_data.added_by.username }}">{{ review_data.added_by.first_name }}</a></h4>
                         </div>
                         <p></p>
-                        <p ng-bind-html="review_data.briefing"></p>
+                        <p style="word-wrap: break-word;" ng-bind-html="review_data.briefing"></p>
                         <div class="container" style="width: 100%">
                             <div class="row" ng-app="rbControllers" ng-controller="reviewController">
                                 {{ review = review_data;"" }}
