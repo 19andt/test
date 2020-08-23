@@ -18,10 +18,11 @@
 		padding: 0
 	}
 	.background-image {
-		background-image: url(http://test-rb.herokuapp.com/static/images/rb-background-outline.png);
+		background-image: url(http://testing-rb.herokuapp.com/static/images/rb-background-outline.png);
 		background-repeat: no-repeat;
 		background-position: center;
-		height: 800px
+		background-size:contain;
+		height: 500px
 	}
 	a,
 	a:active,
@@ -216,7 +217,7 @@
 	}
 }
 
-@media(max-width:1024px) {
+@media screen and (max-width:1024px) {
 	body,
 	html {
 		background: #f7f7f7
